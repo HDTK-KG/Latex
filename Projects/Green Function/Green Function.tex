@@ -1,0 +1,147 @@
+\documentclass[a4paper,12pt]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{xcolor}
+\usepackage{bxtexlogo}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{fancybox}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{listings,jvlisting}
+\usepackage{here}
+\usepackage{enumerate}
+\usepackage{braket}
+\usepackage{ulem}
+\usepackage{multicol}
+\usepackage{mathcomp}
+\usepackage{url}
+\usepackage{physics}
+\numberwithin{equation}{section}
+\usepackage{cite}
+
+\title{Green Function}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+Green関数とは「系の応答」や「遷移の振る舞い」を記述するのに強力なツールである.
+\section{実空間のGreen関数$G(x,x')$}
+演算子$\hat{L}(x)$で記述される系
+\begin{equation}
+    \hat{L}(x)\Phi_0(x) = 0
+\end{equation}
+に対し, 外部ソース$f(x)$が加わったときの応答
+\begin{equation}\label{withf}
+    \hat{L}(x)(\Phi_0(x)+\phi(x)) = f(x)
+\end{equation}
+を考える. これを解く際に, 以下を満たすGreen関数$G(x,x')$を考えることが有用である.
+\begin{equation}
+    \hat{L}(x)G(x,x') = \delta(x-x')
+\end{equation}
+このとき
+\begin{equation}
+    \phi(x) = \int dx' G(x,x')f(x')
+\end{equation}
+について, 
+\begin{align}
+    \hat{L}(x)\phi(x) & = \int dx' \hat{L}(x)G(x,x')f(x') = \int dx' \delta(x-x')f(x') \notag\\
+        & = f(x)
+\end{align}
+より(\ref{withf})を満たす.\\
+(例) Hamiltonian $\hat{H}_0(x)$に摂動$\hat{V}(x)$が加わったとき
+\begin{equation}
+    (E-\hat{H}_0(x))\Psi_0(x) = 0
+\end{equation}
+に摂動$\hat{V}(x)$が加わり
+\begin{equation}
+    (E-\hat{H}_0(x))(\Psi_0(x)+\psi(x)) = \hat{V}(x)(\Psi_0(x)+\psi(x))
+\end{equation}
+となった場合, Green関数は以下を満たす
+\begin{equation}
+    (E-\hat{H}_0(x))G(x,x')=\delta(x-x')
+\end{equation}
+例えば$\hat{H_0}(x)=-\nabla^2,E=k^2$とすると,
+\begin{equation}
+    G(x,x') = -\frac{1}{4\pi}\frac{e^{ik|x-x'|}}{|x-x'|}
+\end{equation}
+$G(x,x')$を用いて以下のような自己無撞着方程式が得られる
+\begin{align}
+    \psi(x) & = \int dx' G(x,x')\hat{V}(x')(\Psi_0(x')+\psi(x'))\\
+            & = \int dx' G(x,x')\hat{V}(x')\Psi_0(x) + \int dx' dx'' G(x,x')\hat{V}(x') G(x',x'')\hat{V}(x'')(\Psi_0(x'')+\psi(x''))\\
+            & = \cdots
+\end{align}
+これを$\hat{V}(x)$について逐次近似することができる.
+\newpage
+
+\section{Green関数演算子$G(E)$}
+エネルギー依存のグリーン関数$\hat{G}(E)$はHamiltonian $\hat{H}$について
+\begin{equation}
+    (E-\hat{H})\hat{G}(E) = \hat{1}
+\end{equation}
+を満たすものであり,
+\begin{equation}
+    \hat{G}(E) = \frac{1}{E-\hat{H}+i\delta} = \sum_{n} \frac{\ket{n}\bra{n}}{E-\varepsilon_n +i\delta}
+\end{equation}
+と表される. ここで$\delta$は正の微小量であり, 分母の発散を防ぐために取り入れたものである.\\
+主値積分$\mathcal{P}$を用いて
+\begin{equation}
+    \frac{1}{x+i\delta} = \mathcal{P}\frac{1}{x}-i\pi\delta(x)
+\end{equation}
+が成り立つので
+\begin{equation}
+    \hat{G}(E) = \sum_{n} \ket{n}\bra{n}\qty(\mathcal{P}\frac{1}{E-\varepsilon_n}-i\pi \delta(E-\varepsilon_n))
+\end{equation}
+この虚部はスペクトル密度$\hat{A}(E)$と呼ばれる
+\begin{equation}
+    \hat{A}(E) = -\frac{1}{\pi}\Im\hat{G}(E) = \sum_{n} \ket{n}\bra{n}\delta(E-\varepsilon_n)
+\end{equation}
+$\hat{A}(E)$のトレースは状態密度$D(E)$に等しい
+\begin{equation}
+    D(E) = \Tr(\hat{A}(E)) = \sum_{n}\delta(E-\varepsilon_n)
+\end{equation}
+なぜなら状態数$N(E)$は
+\begin{equation}
+    N(E) = \sum_{n} \Theta(E-\varepsilon_n)
+\end{equation}
+で与えられ($\Theta(\varepsilon)$はステップ関数), $D(E)$はそのエネルギー微分
+\begin{equation}
+    D(E) = \dv{E}N(E) = \sum_{n} \delta(E-\varepsilon_n)
+\end{equation}
+となるからである.
+\newpage
+$\hat{G}(E)$もやはり外部ソースに対する応答を記述するのに便利であり,
+\begin{equation}
+    (E-\hat{E})\ket{\Psi}=0
+\end{equation}
+に対し外部ソース$\ket{f}$が加わったときの応答
+\begin{equation}
+    (E-\hat{H})(\ket{\Psi}+\ket{\psi}) = \ket{f}
+\end{equation}
+について
+\begin{equation}
+    \ket{\psi} = \hat{G}(E) \ket{f}
+\end{equation}
+と求められる.\\
+(例) Hamiltonian $\hat{H}_0$に摂動$\hat{V}$が加わったとき
+\begin{equation}
+    (E-\hat{H})\ket{\Psi_0} = 0
+\end{equation}
+に摂動$\hat{V}$が加わり
+\begin{equation}
+    (E-\hat{H}_0)(\ket{\Psi_0}+\ket{\psi}) = \hat{V}(\ket{\Psi_0}+\ket{\psi})
+\end{equation}
+となった場合
+\begin{align}
+    \ket{\psi}  & = \hat{G}(E)\hat{V}(\ket{\Psi_0}+\ket{\psi})\\
+                & = \hat{G}(E)\hat{V}\ket{\Psi_0} + \hat{G}(E)\hat{V}\hat{G}(E)\hat{V}(\ket{\Psi_0}+\ket{\psi})\\
+                & = \cdots
+\end{align}
+これを$\hat{V}$について逐次展開すると, まさに摂動論の式となる.
+\end{document}

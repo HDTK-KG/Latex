@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{xcolor}
+\usepackage{bxtexlogo}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{fancybox}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{listings,jvlisting}
+\usepackage{here}
+\usepackage{enumerate}
+\usepackage{braket}
+\usepackage{ulem}
+\usepackage{multicol}
+\usepackage{mathcomp}
+\usepackage{url}
+\usepackage{physics}
+\numberwithin{equation}{section}
+\usepackage{cite}
+
+\title{Note}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\begin{equation*}
+    \hat{\mathcal{H}}_k = e^{-ik\cdot \hat{r}} \mathcal{H} e^{ik\cdot \hat{r}}
+\end{equation*}
+\begin{equation*}
+    \hat{\mathcal{H}}_k \ket{u_n (k)} = E_n(k) \ket{u_n(k)}
+\end{equation*}
+\begin{align*}
+    Q^{ij}_{n}(k)   & = \bra{\partial_i u_n(k)}\qty(1-\ket{u_n(k)}\bra{u_n(k)})\ket{\partial_j u_n(k)}\\
+                & = \sum_{m \neq n} \frac{\bra{u_n(k)}\partial_i H_k \ket{u_m(k)}\bra{u_m(k)}\partial_j H_k \ket{u_n(k)}}{(E_m-E_n)^2}\\
+                & = g^{ij}_{n}(k) - \frac{i}{2}\Omega^{ij}_{n}(k)
+\end{align*}
+\begin{align*}
+    \dd s^2    & \coloneq 1-|\braket{u_n(k)}{u_n(k+\dd{k})}|^2\\
+                & = g_{ij}(k)\dd k_i \dd k_j
+\end{align*}
+\begin{equation*}
+    \gamma = \int_S \dd \bm{S} \cdot \bm{\Omega}_n(k) 
+\end{equation*}
+
+\newpage
+\begin{equation*}
+    a^{i}_{mn}(k) = i \braket{u_m(k)}{\partial_i u_n(k)}
+\end{equation*}
+\begin{equation*}
+    \Omega^{ij}_n(k) = \partial_i a^{j}_{nn}(k) - \partial_j a^{i}_{nn}(k)
+\end{equation*}
+P Symmetry : 適切な Gauge をとると
+\begin{equation*}
+    P\ket{u_n(k)} = \ket{u_n(-k)}
+\end{equation*}
+\begin{equation*}
+    a^{i}_{mn}(-k) = - a^{i}_{mn}(k) 
+\end{equation*}
+\begin{equation*}
+    \Omega^{ij}_n(-k) =  \Omega^{ij}_n(k)
+\end{equation*}
+
+T Symmetry : 
+\begin{equation*}
+    T\ket{u_n(k)} = \ket{u_n(-k)}
+\end{equation*}
+\begin{equation*}
+    a^{i}_{mn}(-k) = a^{i}_{nm}(k)
+\end{equation*}
+\begin{equation*}
+    \Omega^{ij}_n(-k) =  -\Omega^{ij}_n(k)
+\end{equation*}
+
+PT Symmetry :
+\begin{equation*}
+    PT\ket{u_n(k)} = \ket{u_n(k)}
+\end{equation*}
+\begin{equation*}
+    a^{i}_{mn}(k) = -a^{i}_{nm}(k)
+\end{equation*}
+\begin{equation*}
+    \Omega^{ij}_n(k) =  0
+\end{equation*}
+
+\begin{equation*}
+    (\braket{T\phi}{T\psi} = \braket{\psi}{\phi})
+\end{equation*}
+\newpage
+
+\end{document}

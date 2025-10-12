@@ -1,0 +1,88 @@
+\documentclass[a4paper,12pt]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{xcolor}
+\usepackage{bxtexlogo}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{amsthm}
+\usepackage{ascmac}
+\usepackage{fancybox}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+\usepackage{listings,jvlisting}
+\usepackage{here}
+\usepackage{enumerate}
+\usepackage{braket}
+\usepackage{ulem}
+\usepackage{multicol}
+\usepackage{mathcomp}
+\usepackage{url}
+\usepackage{physics}
+\numberwithin{equation}{section}
+\usepackage{cite}
+
+\title{Linear Response Theory}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\section{応答関数}
+演算子$A$の時間に依存する外場
+\begin{equation}
+    H_{\mathrm{ext}}(t) = - \int A(\vec{r}) F(\vec{r},t)
+\end{equation}
+に対する演算子$B$の応答を考える. まず,外場がパルスの場合
+\begin{equation}
+    F(\vec{r},t) = \delta(\vec{r})\delta(t)
+\end{equation}
+における演算子Bの平均値の変化を
+\begin{equation}
+    <\Delta B(\vec{r},t)> = \chi_{AB}(\vec{r},t)
+\end{equation}
+とする. この$\chi_{AB}(\vec{r},t)$が応答関数である.因果律より,$\chi_{AB}(\vec{r},t<0)=0$\\
+外場はパルスの重ね合わせで表せる.
+\begin{equation}
+    F(\vec{r},t) = \int_{-\infty}^{\infty}d\vec{r'} dt' F(\vec{r'},t') \delta(\vec{r}-\vec{r'}) \delta(t-t')
+\end{equation}
+線形応答を考えているので, 応答は
+\begin{align}
+    <\Delta B(\vec{r},t)>   &= \int_{-\infty}^{t} dt'\int d\vec{r'} \chi_{AB}(\vec{r}-\vec{r'},t-t') F(\vec{r'},t')\notag \\ 
+                            &= \int_{0}^{\infty} dt'\int d\vec{r'} \chi_{AB}(\vec{r'},t') F(\vec{r}-\vec{r'},t-t')
+\end{align}
+Fourier変換
+\begin{equation}
+    F(\vec{q},\omega) = \int_{-\infty}^{\infty}dt \int d\vec{r} e^{i \qty( \vec{q}\cdot \vec{r} -\omega t)} F(\vec{r},t)
+\end{equation}
+より,
+\begin{equation}
+    <\Delta B(\vec{q},\omega)> = \chi_{AB}(\vec{q'},\omega') F(\vec{q'},\omega')
+\end{equation}
+\newpage
+\section{久保公式}
+線形応答における応答関数$\chi_{AB}$は外場のないときの$A$と$B$の相関で与えられる.
+\begin{equation}
+    \chi_{AB}(\vec{r}-\vec{r'},t-t') = \frac{i}{\hbar}\Theta (t-t') < [B(\vec{r},t),A(\vec{r'},t')] >_0
+\end{equation}
+ここで$A(\vec{r},t) = e^{\frac{i}{\hbar} Ht}A(\vec{r})e^{-\frac{i}{\hbar} Ht}$
+\section{Kramers-Kronigの関係式}
+応答関数$\chi_{AB}$の実部,虚部の関係式
+\begin{align}
+    \Re \chi_{AB}(\vec{q},\omega) = \hspace{4mm}&\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} d\omega' \frac{\Im \chi_{AB}(\vec{q},\omega')}{\omega'-\omega}\\
+    \Im \chi_{AB}(\vec{q},\omega) = -&\frac{1}{\pi} \mathcal{P} \int_{-\infty}^{\infty} d\omega' \frac{\Re \chi_{AB}(\vec{q},\omega')}{\omega'-\omega}
+\end{align}
+\section{揺動散逸定理}
+外場に対する応答と熱平衡状態の自発的なゆらぎに対する応答と同じである.
+\begin{equation}
+    C_{B^{\dagger}B}(\vec{q},\omega) = \frac{2\hbar}{1-e^{-\beta \hbar \omega}} \Im \chi_{B^{\dagger}B}(\vec{q},\omega)
+\end{equation}
+$S(\vec{q},\omega)=C_{B^{\dagger}B}(\vec{q},\omega)$は揺動スペクトル, $C_{AB} (\vec{r}-\vec{r'},t-t') = <B(\vec{r},t)A(\vec{r'},t')>_0$
+
+\begin{equation}
+    <|B(\vec{q})|^2>_0 = \frac{\hbar}{2\pi}\int_{-\infty}^{\infty} d\omega \coth \qty(\frac{\beta \hbar \omega}{2}) \Im \chi_{B^{\dagger}B}(\vec{q},\omega)
+\end{equation}
+\end{document}
