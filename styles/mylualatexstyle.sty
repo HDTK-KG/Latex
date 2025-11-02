@@ -1,3 +1,5 @@
+%フォント
+\usepackage{luatexja}
 % コード
 \usepackage{listings,jvlisting}
 %多段組
@@ -40,9 +42,11 @@
 
 \newcommand{\reduwave}[1]{\textcolor{red}{\uwave{\textcolor{black}{#1}}}}
 
+\newcommand{\TT}{\text{T}}
 \newcommand{\sgn}{\text{sgn}}
 \newcommand{\pf}{\text{pf}}
 \newcommand{\Pf}{\text{Pf}}
+\renewcommand{\proofname}{\textbf{証明}}
 
 % --- 定義用の新しいtcolorbox環境 (赤色) ---
 % \begin{deftcolorbox}[オプション] ... \end{deftcolorbox} で使える

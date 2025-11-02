@@ -1,5 +1,4 @@
 \documentclass[a4paper,12pt]{jlreq}
-\usepackage{luatexja}
 
 \usepackage{mylualatexstyle}
 
@@ -17,10 +16,158 @@
 \maketitle
 
 \begin{deftcolorbox}[title = Pfaffian]
+    $2n\times 2n$の反対称行列$A(A^{\TT} = -A)$に定義される以下の量を
+    Pfaffianという.
     \begin{equation}
         \Pf (A) = \sum_{M} \sgn (M) \prod_{(i,j)\in M} a_{ij}
     \end{equation}
+    ここで$M$は$\qty{1,\cdots,2n}$の$n$個のペアへの分割
+    \begin{equation}
+        \qty{ (i_1,j_1),\cdots ,(i_n,j_n) }\quad (i_1 < \cdots < i_n,\ i_1 < j_1,\cdots , i_n < j_n)
+    \end{equation}
 \end{deftcolorbox}
 
+\begin{theotcolorbox}[title = Pfaffianの他の表し方]
+    Pfaffianは以下の形に変形できる.
+    \begin{equation}
+        \Pf (A) = \frac{1}{2^n n!} \sum_{\sigma \in S_{2n}} \sgn (\sigma) \prod_{k=1}^{n} a_{\sigma(2k-1) \sigma(2k)}
+    \end{equation}
+    wedge積を用いて表す方法もある. まず以下のような$W(A)$を定義する.
+    \begin{equation}
+        W(A) \coloneq a_{ij} e^i \wedge e^j
+    \end{equation}
+    これは縮約を取っていることに注意. このとき
+    \begin{equation}
+    \begin{aligned}
+        [W(A)]^n & = \sum_{\sigma \in S_{2n}} \prod_{k=1}^{2n} a_{\sigma(2k-1) \sigma(2k)} e^{\sigma(2k-1)} \wedge e^{\sigma(2k)}\\
+            & = \sum_{\sigma \in S_{2n}} \sgn (\sigma) \qty[\prod_{k=1}^{2n} a_{\sigma(2k-1) \sigma(2k)}] e^1 \wedge \cdots \wedge e^{2n}\\
+            & = 2^n n! \Pf (A) e^1 \wedge \cdots \wedge e^{2n}
+    \end{aligned}
+    \end{equation}
+\end{theotcolorbox}
+\newpage
+ここで, 反対称行列の行列式とPfaffianの関係について述べる.
+$n$次の反対称行列$A$について, その固有方程式$f(\lambda)$は
+\begin{equation}
+\begin{aligned}
+    f(\lambda) & = \det (\lambda I - A) = \det (\lambda I + A^{\TT})\\
+    & = \det (\lambda I + A)\\
+    & = (-1)^n f(-\lambda)
+\end{aligned}
+\end{equation}
+よって$n$が$\begin{pmatrix} 偶数 \\ 奇数 \end{pmatrix}$のとき, $f(\lambda)$は$\begin{pmatrix} 偶関数 \\ 奇関数 \end{pmatrix}$となる.
+
+$n$が奇数のときは$\det A=0$となり, $n$が偶数のときは固有値は$\lambda, -\lambda$のペアで現れる.
+
+特に, $n$が偶数の時について, 以下の関係が成り立つ.
+\begin{theotcolorbox}[title = 行列式とPfaffianの関係]
+    $2n\times 2n$の反対称行列$A$について
+    \begin{equation}
+        \label{det_pfa}
+        \det A = \qty[ \Pf (A) ]^2
+    \end{equation}
+\end{theotcolorbox}
+
+\begin{proof}
+    (\ref{det_pfa})は$a_{ij}$に関する有限次の多項式恒等式なので, $A$が実反対称行列の場合について示せば十分である.
+
+    補題Aより, ある可逆行列$S$が存在し,
+    \begin{equation}
+        S^{\TT}AS = \begin{pmatrix}
+            0 & \lambda_1 & & & \\
+            -\lambda_1 & 0 & & & \\
+             & & \ddots & & \\
+            & & & 0 & \lambda_n \\
+            & & & -\lambda_n & 0
+        \end{pmatrix}
+        \qty( = \Lambda )
+    \end{equation}
+
+    $\Lambda$について簡単な計算により
+    \begin{align}
+        \det \Lambda    & = (\lambda_1 \cdots \lambda_n)^2\\
+        \Pf (\Lambda)   & = \lambda_1 \cdots \lambda_n
+    \end{align}
+    さらに
+    \begin{equation}
+        \det S^{\TT}AS = \det S^{\TT} \det A \det S = (\det S)^2 \det A
+    \end{equation}
+    及び補題Bより
+    \begin{equation}
+        \Pf (S^{\TT}AS) = (\det S) \Pf (A)
+    \end{equation}
+    これらから
+    \begin{align}
+        (\det S)^2 \det A = \det \Lambda = [\Pf (\Lambda)]^2 = (\det S)^2 [\Pf (A)]^2
+    \end{align}
+    $\det S \neq 0$より
+    \begin{equation}
+        \det A = \qty[ \Pf (A) ]^2
+    \end{equation}
+\end{proof}
+
+\begin{theotcolorbox}[title = 補題A]
+    $2n\times 2n$の実反対称行列$A$についてある可逆行列$S$が存在し,
+    \begin{equation}
+        S^{\TT}AS = \begin{pmatrix}
+            0 & \lambda_1 & & & \\
+            -\lambda_1 & 0 & & & \\
+             & & \ddots & & \\
+            & & & 0 & \lambda_n \\
+            & & & -\lambda_n & 0
+        \end{pmatrix}
+        \qty( = \Lambda )
+    \end{equation}
+\end{theotcolorbox}
+
+\begin{proof}
+    \begin{equation}
+        B \coloneq A^{\TT}A = -A^2
+    \end{equation}
+    とおくと, $B$は半正定値実対称行列
+\end{proof}
+
+\begin{theotcolorbox}[title = 補題B]
+    $2n\times 2n$の反対称行列$A$及び可逆行列$S$について
+    \begin{equation}
+        \Pf (S^{\TT}AS) = (\det S) \Pf (A)
+    \end{equation}
+\end{theotcolorbox}
+
+\begin{proof}
+    \begin{equation}
+        \Lambda \coloneq S^{\TT}AS
+    \end{equation}
+    について,
+    \begin{equation}
+        \Lambda_{ij} = (S^{\TT})_{ik} a_{kl} S_{lj} = a_{kl} S_{ki} S_{lj}
+    \end{equation}
+    よって
+    \begin{gather}
+        \begin{aligned}
+            W(\Lambda) & = \Lambda_{ij} e^i \wedge e^j = a_{kl} S_{ki} S_{lj} e^i \wedge e^j\\
+            & = a_{kl} f^k \wedge f^l
+        \end{aligned}
+    \end{gather}
+    これは$e^i$から$f^i \coloneq S_{ij}e^j$への基底変換と考えることができ, 
+    \begin{equation}
+        \qty[W(\Lambda)]^n = 2^n n! \Pf (A) f^1 \wedge \cdots \wedge f^{2n}
+    \end{equation}
+    これと
+    \begin{equation}
+        f^1 \wedge \cdots \wedge f^{2n} = (\det S) e^1 \wedge \cdots \wedge e^{2n}
+    \end{equation}
+    から, 
+    \begin{equation}
+        \begin{aligned}
+            \qty[W(\Lambda)]^n & = 2^n n! \Pf (\Lambda) e^1 \wedge \cdots \wedge e^{2n}\\
+            & = 2^n n! \Pf (A) (\det S) e^1 \wedge \cdots \wedge e^{2n}
+        \end{aligned}
+    \end{equation}
+    よって
+    \begin{equation}
+        \Pf (\Lambda) = (\det S) \Pf (A)
+    \end{equation}
+\end{proof}
 
 \end{document}
