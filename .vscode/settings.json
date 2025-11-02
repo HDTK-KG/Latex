@@ -10,7 +10,8 @@
         "-synctex=1",
         "-interaction=nonstopmode",
         "-halt-on-error",
-        "%DOC%"
+        "%DOC%",
+        "$ENV{'TEXINPUTS'}='./styles:'",
     ],
     "env": {}
     },
@@ -71,6 +72,9 @@
     "*.snm",
     "*.vrb",
     ],
+    "latex-workshop.latex.texINPUTS": [
+        "./styles//"
+    ] ,
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.clean.enabled": true, //上とぶつからないかな？auxiliaryファイル削除

@@ -1,50 +1,12 @@
 \documentclass[a4paper,12pt]{jlreq}
 \usepackage{luatexja}
 
-% コード
-\usepackage{listings,jvlisting}
-%多段組
-\usepackage{multicol}
-%数式
-\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
-\usepackage{empheq}
-\usepackage{bm,bbm}
-\usepackage{mathcomp}
-\usepackage{braket,physics}
-%画像
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage{float}
-% TikZ
-\usepackage{tikz}
-\usetikzlibrary{intersections, calc, arrows.meta}
-\usetikzlibrary{3d}
-%表
-\usepackage{booktabs}
-%箇条書き
-\usepackage{enumerate}
-%下線
-\usepackage{ulem}
-%囲み
-\usepackage{ascmac}
-\usepackage{fancybox}
-\usepackage{tcolorbox}
-%キャプション
-\usepackage[hang,small,bf]{caption}
-\usepackage[subrefformat=parens]{subcaption}
-\captionsetup{compatibility=false}
-%hyperlink
-\usepackage{hyperref}
-%参照
-\usepackage{cite}
+\usepackage{mylualatexstyle}
 
-%数式番号を(2.1.10) ({Section番号}{Subsection番号}{数式番号})にしたい
-\numberwithin{equation}{subsection}
-%字下げしない
-\setlength{\parindent}{0pt}
+
 
 %タイトル
-\title{パフィアン}
+\title{Pfaffian}
 \author{}
 \date{}
 
@@ -53,5 +15,12 @@
 
 %タイトル
 \maketitle
+
+\begin{deftcolorbox}[title = Pfaffian]
+    \begin{equation}
+        \Pf (A) = \sum_{M} \sgn (M) \prod_{(i,j)\in M} a_{ij}
+    \end{equation}
+\end{deftcolorbox}
+
 
 \end{document}
