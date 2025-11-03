@@ -27,7 +27,7 @@
     \end{equation}
 \end{deftcolorbox}
 
-\begin{theotcolorbox}[title = Pfaffianの他の表し方]
+\begin{deftcolorbox}[title = Pfaffianの他の表し方]
     Pfaffianは以下の形に変形できる.
     \begin{equation}
         \Pf (A) = \frac{1}{2^n n!} \sum_{\sigma \in S_{2n}} \sgn (\sigma) \prod_{k=1}^{n} a_{\sigma(2k-1) \sigma(2k)}
@@ -44,7 +44,7 @@
             & = 2^n n! \Pf (A) e^1 \wedge \cdots \wedge e^{2n}
     \end{aligned}
     \end{equation}
-\end{theotcolorbox}
+\end{deftcolorbox}
 \newpage
 ここで, 反対称行列の行列式とPfaffianの関係について述べる.
 $n$次の反対称行列$A$について, その固有方程式$f(\lambda)$は
@@ -107,7 +107,7 @@ $n$が奇数のときは$\det A=0$となり, $n$が偶数のときは固有値�
 \end{proof}
 
 \begin{theotcolorbox}[title = 補題A]
-    $2n\times 2n$の実反対称行列$A$についてある可逆行列$S$が存在し,
+    $2n\times 2n$の実反対称行列$A$についてある直交行列$S$が存在し,
     \begin{equation}
         S^{\TT}AS = \begin{pmatrix}
             0 & \lambda_1 & & & \\
@@ -116,7 +116,6 @@ $n$が奇数のときは$\det A=0$となり, $n$が偶数のときは固有値�
             & & & 0 & \lambda_n \\
             & & & -\lambda_n & 0
         \end{pmatrix}
-        \qty( = \Lambda )
     \end{equation}
 \end{theotcolorbox}
 
@@ -125,6 +124,85 @@ $n$が奇数のときは$\det A=0$となり, $n$が偶数のときは固有値�
         B \coloneq A^{\TT}A = -A^2
     \end{equation}
     とおくと, $B$は半正定値実対称行列
+
+    Bの固有値$\mu >0$について, $\mu$に対応する固有空間$U_{\mu}$を考える.
+    
+    $U_{\mu}$上の実単位ベクトル$x$について
+    \begin{equation}
+        Bx = \mu x
+    \end{equation}
+    ここで以下のような$y$を定める
+    \begin{equation}
+        y = \frac{Ax}{\sqrt{\mu}}
+    \end{equation}
+    このとき
+    \begin{gather}
+        \norm{y}^2 = \frac{1}{\mu}x^{\TT}A^{\TT} A x = \frac{1}{\mu}x^{\TT}B x = 1\\
+        B y = -\frac{1}{\sqrt{\mu}} A^3 x = \frac{1}{\sqrt{\mu}} A Bx = \sqrt{\mu} A x = \mu y
+    \end{gather}
+    となり, $y$も$U_{\mu}$上の実単位ベクトルである. さらに, 
+    \begin{equation}
+        Ay = \frac{A^2x}{\sqrt{\mu}} = -\frac{Bx}{\sqrt{\mu}} = -\sqrt{\mu} x
+    \end{equation}
+    となる. 以下より, $x,y$は直行する
+    \begin{equation}
+        x^{\TT}y = x^{\TT}Ax = - y^{\TT}x = 0
+    \end{equation}
+    \begin{itembox}[l]{固有空間$U_{\mu}$の正規直交基底}
+    $U_{\mu}$は以下のような正規直交基底$\qty{x_{\mu 1},\cdots,x_{\mu n_{\mu}}, y_{\mu 1},\cdots,y_{\mu n_{\mu}}}$で表せる.
+    \begin{equation}
+        A x_{\mu i} = \sqrt{\mu} y_{\mu i},\quad A y_{\mu i} = - \sqrt{\mu} x_{\mu i}
+    \end{equation}
+    \end{itembox}
+    これは以下のように構成できる. 
+
+    \begin{shadebox}
+    $U_{\mu}$から実単位ベクトル$x_{\mu 1}$をとり, $y = \frac{Ax_{\mu 1}}{\sqrt{\mu}}$ と定める.
+
+    $\rightarrow \cdots $
+
+    $\rightarrow$ $\qty{x_{\mu 1},\cdots,x_{\mu i}, y_{\mu 1},\cdots,y_{\mu i}}$と直行する実単位ベクトル$x_{\mu (i+1)}$をとり, $y = \frac{Ax_{\mu (i+1)}}{\sqrt{\mu}}$ と定める. 
+
+    $\rightarrow \cdots $
+
+    このとき, $i < j$について, 定義より$x_{\mu j}$は$x_{\mu i}, y_{\mu i}$と直交するので
+    \begin{gather}
+        x_{\mu i}^{\TT}x_{\mu j} = 0\\
+        x_{\mu i}^{\TT}y_{\mu j} = x_{\mu i}^{\TT} A x_{\mu j} = - y_{\mu i}^{\TT} x_{\mu j} = 0\\
+        y_{\mu i}^{\TT}x_{\mu j} = 0\\
+        y_{\mu i}^{\TT}y_{\mu j} = x_{\mu i}^{\TT} B x_{\mu j} = \mu x_{\mu i}^{\TT}x_{\mu j} = 0
+    \end{gather}
+    つまり, $\qty{x_{\mu 1},\cdots,x_{\mu n_{\mu}}, y_{\mu 1},\cdots,y_{\mu n_{\mu}}}$は正規直交基底をなす.
+    \end{shadebox}
+    $B$の固有値0の固有空間$U_0$については, $U_0$に正規直交基底$\qty{z_1,\cdots,z_l}$を構成すると, 
+    \begin{equation}
+        B z_i = 0
+    \end{equation}
+    より
+    \begin{equation}
+        \norm{Az_i}^2 = z_i^{\TT}B z_i = 0
+    \end{equation}
+    より
+    \begin{equation}
+        A z_i = 0
+    \end{equation}
+    $B$はHermiteなので, 異なる固有値の固有空間は直交する.
+    よって, $B$のうち非0の固有空間の正規直交基底を集めて ${x_1,\cdots,x_m, y_1,\cdots,y_m}$とし, $(2m+l=2n)$
+    直交行列
+    \begin{equation}
+        S \coloneq \qty( x_1,y_1,\cdots x_m, y_m , z_1, \cdots ,z_l )
+    \end{equation}
+    を定めると
+    \begin{equation}
+        S^{\TT} A S = \begin{pmatrix}
+            0 & \sqrt{\mu_1} & & & \\
+            -\sqrt{\mu_1} & 0 & & & \\
+             & & \ddots & & \\
+            & & & 0 & \sqrt{\mu_n} \\
+            & & & -\sqrt{\mu_n} & 0
+        \end{pmatrix}
+    \end{equation}
+    ここで, $\mu_{2m+1},\cdots,\mu_{2n} = 0$.
 \end{proof}
 
 \begin{theotcolorbox}[title = 補題B]
@@ -169,5 +247,21 @@ $n$が奇数のときは$\det A=0$となり, $n$が偶数のときは固有値�
         \Pf (\Lambda) = (\det S) \Pf (A)
     \end{equation}
 \end{proof}
+
+\begin{deftcolorbox}[title = 行列式のwedge積を用いた表し方]
+    $n\times n$の行列$A$の行列式は
+    \begin{equation}
+        \det A = \sum_{\sigma \in S_n} \sgn(\sigma) \prod a_{i\sigma(i)}
+    \end{equation}
+    であり, wedge積を用いると
+    \begin{equation}
+        f^i = a_{ij} e^i
+    \end{equation}
+    なる基底変換をした際に
+    \begin{equation}
+        f^1 \wedge \cdots \wedge f^n = (\det A) e^1 \wedge \cdots \wedge e^n
+    \end{equation}
+    となる
+\end{deftcolorbox}
 
 \end{document}
