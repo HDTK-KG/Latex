@@ -1,0 +1,91 @@
+\documentclass[a4paper,12pt]{jlreq}
+
+\usepackage{mylualatexstyle}
+
+
+
+%タイトル
+\title{$Z_2$ Class}
+\author{}
+\date{}
+
+
+\begin{document}
+
+%タイトル
+\maketitle
+
+\begin{theotcolorbox}[title = 時間反転演算子$\hat{T}$]
+    $\hat{K}$ を波動関数の共役をとる演算子とする. $\frac{1}{2}$スピン系で
+    \begin{equation}
+        \hat{T} = -i\sigma_2 \hat{K} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \hat{K}
+    \end{equation}
+    \begin{equation}
+        \hat{T}^2 = -1
+    \end{equation}
+    \begin{equation}
+        \bra{\hat{T} \psi} \ket{\hat{T} \phi} = \bra{\phi} \ket{\psi}
+    \end{equation}
+    \begin{equation}
+        \bra{\psi} \ket{\hat{T} \phi} = - \bra{\phi} \ket{\hat{T} \psi}
+    \end{equation}
+    \begin{equation}
+        \begin{aligned}
+            \bra{\hat{T} \psi} \hat{T} \hat{A} \hat{T}^{-1} \ket{\hat{T} \phi} & = \bra{\hat{T} \psi} \ket{\hat{T} \hat{A} \phi}\\
+            & = \bra{\hat{A} \phi} \ket{\psi} = \bra{\phi} \hat{A}^{\dagger} \ket{\psi}
+        \end{aligned}
+    \end{equation}
+\end{theotcolorbox}
+
+\begin{theotcolorbox}[title = 時間反転対称な系]
+    \begin{equation}
+        \hat{T}^{-1}\hat{H}(k)\hat{T} = \hat{H}(-k)
+    \end{equation}
+    $T\ket{u_n(k)}$は$\hat{H}(-k)$の固有状態である
+    \begin{equation}
+        \hat{H}(-k)\hat{T}\ket{u_n(k)} = \hat{T} \hat{H}(k)\ket{u_n(k)} = E_n(k) \qty( \hat{T} \ket{u_n(k)} )
+    \end{equation}
+\end{theotcolorbox}
+
+\begin{deftcolorbox}[title = $w$行列]
+    \begin{equation}
+        \hat{T} \ket{u_{\beta}(k)} = w_{\gamma \beta} (k) \ket{u_{\gamma}(-k)}
+    \end{equation}
+    と定める. 
+    \begin{equation}
+        w_{\alpha \beta}(k) = \bra{u_{\alpha}(-k)} \hat{T} \ket{u_{\beta}(k)}
+    \end{equation}
+\end{deftcolorbox}
+
+\begin{theotcolorbox}[title = $w$行列の性質]
+    Unitary
+    \begin{equation}
+        \begin{aligned}
+            \qty( w(k)^{\dagger} w(k) )_{\alpha \beta} & = w^{\ast}_{\gamma \alpha} (k) w_{\gamma \beta}(k)\\
+            & = \qty( \bra{u_{\gamma}(-k)} \hat{T} \ket{u_{\alpha}(k)} )^{\ast} \qty( \bra{u_{\gamma}(-k)} \hat{T} \ket{u_{\beta}(k)} )\\
+            & = \bra{\hat{T} u_{\alpha}(k)} \ket{u_{\gamma}(-k)} \bra{u_{\gamma}(-k)} \ket{\hat{T} u_{\beta}(k)}\\
+            & = \bra{\hat{T} u_{\alpha}(k)} \ket{\hat{T} u_{\beta}(k)}\\
+            & = \bra{u_{\beta}(k)} \ket{u_{\alpha}(k)} = \delta_{\alpha \beta}
+        \end{aligned}
+    \end{equation}
+    $w(-k)w(k) = -1$
+    \begin{equation}
+        \begin{aligned}
+            \hat{T}^2 \ket{u_{\alpha}(k)} & = - \ket{u_{\alpha}(k)}\\
+            & = w_{\beta \alpha}(k) \hat{T} \ket{u_{\beta}(-k)}\\
+            & = w_{\beta \alpha}(k) w_{\gamma \beta} (-k) \ket{u_{\gamma}(k)}\\
+            よって w_{\gamma \beta}(-k) w_{\beta \alpha}(k) & = -\delta_{\alpha \gamma}
+        \end{aligned}
+    \end{equation}
+    $w(k) = -w(-k)^{\intercal}$
+    \begin{equation}
+        \begin{aligned}
+            w_{\alpha \beta} (k) & = \bra{u_{\alpha}(-k)} \hat{T} \ket{u_{\beta}(k)}\\
+            & = - \bra{u_{\beta}(k)} \hat{T} \ket{u_{\alpha}(-k)}\\
+            & = -w_{\beta \alpha}(-k)
+        \end{aligned}
+    \end{equation}
+    TRIM $\Lambda$では$w(\Lambda)$は反対称行列
+\end{theotcolorbox}
+
+\end{document}
