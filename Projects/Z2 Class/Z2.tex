@@ -49,12 +49,13 @@
 
 \begin{deftcolorbox}[title = $w$行列]
     \begin{equation}
-        \hat{T} \ket{u_{\beta}(k)} = w_{\gamma \beta} (k) \ket{u_{\gamma}(-k)}
-    \end{equation}
-    と定める. 
-    \begin{equation}
         w_{\alpha \beta}(k) = \bra{u_{\alpha}(-k)} \hat{T} \ket{u_{\beta}(k)}
     \end{equation}
+    と定める. 
+    \begin{align}
+        \hat{T} \ket{u_{\beta}(k)} & = w_{\alpha \beta} (k) \ket{u_{\alpha}(-k)}\\
+        \ket{u_{\alpha}(-k)} & = w^{\ast}_{\alpha \beta}(k) \hat{T} \ket{u_{\beta}(k)}
+    \end{align}
 \end{deftcolorbox}
 
 \begin{theotcolorbox}[title = $w$行列の性質]
@@ -87,5 +88,71 @@
     \end{equation}
     TRIM $\Lambda$では$w(\Lambda)$は反対称行列
 \end{theotcolorbox}
+
+\begin{deftcolorbox}[title = Berry接続行列]
+    \begin{equation}
+        a_{i,\alpha \beta}(k) = - i \bra{u_{\alpha}(k)} \partial_i \ket{u_{\beta}(k)}
+    \end{equation}
+    ここで$i=1,2,3$であり, $i$それぞれに行列$a_i(k)$が対応する.
+
+    $a_i(k)$はHermite行列である
+    \begin{equation}
+        a_{i,\alpha \beta}(k) = a_{i, \beta \alpha}^{\ast}(k)
+    \end{equation}
+\end{deftcolorbox}
+\begin{theotcolorbox}[title = $w$行列とBerry接続行列の関係]
+    \begin{equation}
+        a_i(-k) = w(k) a_i^{\ast}(k) w^{\dagger}(k) + i w(k) \partial_i w^{\dagger}(k)
+    \end{equation}
+    上式を変形すると
+    \begin{equation}
+        \tr [a_i(k)] = \tr [a_i(-k)] + i \tr [w^{\dagger}(k) \partial_i w(k)]
+    \end{equation}
+\end{theotcolorbox}
+
+\begin{proof}
+    \begin{equation*}
+        \ket{u_{\alpha}(-k)} = w^{\ast}_{\alpha \beta}(k) \ket{\hat{T} u_{\beta}(k)}
+    \end{equation*}
+    を用いると
+    \begin{equation}
+        \begin{aligned}
+            a_{i,\alpha \beta}(-k) & = -i \bra{u_{\alpha}(-k)} (-\partial_i) \ket{u_{\beta}(-k)}\\
+            & = i w_{\alpha \gamma}(k) \bra{\hat{T} u_{\gamma}(k)} \partial_i \qty( w^{\ast}_{\beta \lambda}(k) \ket{\hat{T} u_{\lambda}(k)} )\\
+            & = i w_{\alpha \gamma}(k) \bra{\hat{T} u_{\gamma}(k)} \qty( \partial_i w^{\ast}_{\beta \lambda}(k)) \ket{\hat{T} u_{\lambda}(k)}\\
+            & + i w_{\alpha \gamma}(k) \bra{\hat{T} u_{\gamma}(k)} w^{\ast}_{\beta \lambda}(k) \partial_i \ket{\hat{T} u_{\lambda}(k)}
+        \end{aligned}
+    \end{equation}
+    \begin{equation}
+        \begin{aligned}
+            (上式) & = i w_{\alpha \gamma}(k) \qty( \partial_i w^{\ast}_{\beta \lambda}(k)) \bra{\hat{T} u_{\gamma}(k)} \ket{\hat{T} u_{\lambda}(k)}\\
+            & = i w_{\alpha \gamma}(k) \qty( \partial_i w^{\ast}_{\beta \lambda}(k)) \delta_{\gamma \lambda}\\
+            & = i w_{\alpha \gamma}(k) \partial_i w^{\ast}_{\beta \gamma}(k)\\
+            & = i \qty(w(k)\partial_i w^{\dagger}(k))_{\alpha \beta}
+        \end{aligned}
+    \end{equation}
+    \begin{equation}
+        \begin{aligned}
+            (下式) & = i w_{\alpha \gamma}(k) w^{\ast}_{\beta \lambda}(k) \bra{\hat{T} u_{\gamma}(k)} \partial_i \ket{\hat{T} u_{\lambda}(k)}\\
+            & = i w_{\alpha \gamma}(k) w^{\ast}_{\beta \lambda}(k) \bra{\hat{T} u_{\gamma}(k)} \ket{\hat{T} \partial_i u_{\lambda}(k)}\\
+            & = i w_{\alpha \gamma}(k) w^{\ast}_{\beta \lambda}(k) \bra{\partial_i u_{\lambda}(k)} \ket{u_{\gamma}(k)}\\
+            & = w_{\alpha \gamma}(k) w^{\ast}_{\beta \lambda}(k) \qty( -i \bra{u_{\gamma}(k)} \ket{\partial_i u_{\lambda}(k)})^{\ast}\\
+            & = w_{\alpha \gamma}(k) w^{\ast}_{\beta \lambda}(k) a_{i, \gamma \lambda}^{\ast}\\
+            & = \qty( w(k) a_i^{\ast}(k) w^{\dagger}(k) )_{\alpha \beta}
+        \end{aligned}
+    \end{equation}
+    よって
+    \begin{equation}
+        a_i(-k) = w(k) a_i^{\ast}(k) w^{\dagger}(k) + i w(k) \partial_i w^{\dagger}(k)
+    \end{equation}
+    これをトレースを取る. $w^{\dagger}(k)w(k) = 1$を用いると
+    \begin{equation}
+        \begin{aligned}
+            \tr [a_i(-k)] & = \tr \qty[ w(k) a_i^{\ast}(k) w^{\dagger}(k) ] + i \tr \qty[ w(k) \partial_i w^{\dagger}(k) ]\\
+            & = \tr [a_i^{\ast}(k)] - i \tr \qty[  \qty( \partial_i w(k) ) w^{\dagger}(k) ]\\
+            & = \tr [a_i(k)] - i \tr \qty[ w^{\dagger}(k) \partial_i w(k)  ]
+        \end{aligned}
+    \end{equation}
+\end{proof}
 
 \end{document}
