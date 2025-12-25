@@ -1,0 +1,30 @@
+\documentclass[a4paper,12pt]{jlreq}
+
+\usepackage{mylualatexstyle}
+
+
+
+%タイトル
+\title{Group Theory}
+\author{}
+\date{}
+
+
+\begin{document}
+
+%タイトル
+\maketitle
+
+\begin{deftcolorbox}[title = 群]
+    $2n\times 2n$の反対称行列$A(A^{\TT} = -A)$に定義される以下の量を
+    Pfaffianという.
+    \begin{equation}
+        \Pf (A) = \sum_{M} \sgn (M) \prod_{(i,j)\in M} a_{ij}
+    \end{equation}
+    ここで$M$は$\qty{1,\cdots,2n}$の$n$個のペアへの分割
+    \begin{equation}
+        \qty{ (i_1,j_1),\cdots ,(i_n,j_n) }\quad (i_1 < \cdots < i_n,\ i_1 < j_1,\cdots , i_n < j_n)
+    \end{equation}
+\end{deftcolorbox}
+
+\end{document}
