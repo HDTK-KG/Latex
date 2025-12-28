@@ -15,95 +15,49 @@
 %タイトル
 \maketitle
 
+内田伏一著 ｢集合と位相｣のまとめ
+
+\section{集合}
+
 \begin{deftcolorbox}[title = 集合]
-    $2n\times 2n$の反対称行列$A(A^{\TT} = -A)$に定義される以下の量を
-    Pfaffianという.
+    集合とは数学的要素の集まりである.
+    
+    $a$が集合$A$の元であることを, 記号では$a \in A$と書く.
+\end{deftcolorbox}
+
+\begin{deftcolorbox}[title = 集合の直積]
+    $\qty{X_i}$を$I$を添字集合とする集合族とする, このとき$\qty{X_i}$の直積$\prod_i X_i$は次のように表される.
+
+    $\prod_i X_i$ は以下の性質を満たす写像$f \colon I \longrightarrow X=\bigcup_i X_i$の集まりである.
     \begin{equation}
-        \Pf (A) = \sum_{M} \sgn (M) \prod_{(i,j)\in M} a_{ij}
+        \forall i \in I,\  f(i) \in X_i
     \end{equation}
-    ここで$M$は$\qty{1,\cdots,2n}$の$n$個のペアへの分割
+    もう少し分かりやすい形で書くと, 
+
     \begin{equation}
-        \qty{ (i_1,j_1),\cdots ,(i_n,j_n) }\quad (i_1 < \cdots < i_n,\ i_1 < j_1,\cdots , i_n < j_n)
+        \prod_i X_i = \qty{(\cdots,x_i,\cdots) | \forall i \in I,\ x_i \in X_i}
     \end{equation}
 \end{deftcolorbox}
 
-\begin{tikzpicture}[
-    % スタイルの定義
-    dot/.style={circle, draw=black, fill=white, inner sep=1.5pt},
-    reddot/.style={circle, fill=red, inner sep=1.8pt},
-    bluedot/.style={circle, fill=cyan, inner sep=1.8pt},
-    path_line/.style={thick, gray!80},
-    red_line/.style={ultra thick, red!70}
-]
+例えば集合$A,B$の直積$A \times B$は$(a,b)\ (a \in A,\ b \in B)$という順序対からなる集合である.
 
-    % --- 座標の定義と描画 ---
+\begin{deftcolorbox}[title = 集合の直和]
+    $\qty{X_i}$を$I$を添字集合とする集合族とする, このとき$\qty{X_i}$の直和は以下で表される.
+    \begin{equation}
+        \coprod_i X_i \coloneq \bigcup_i Y_i
+    \end{equation}
+    ここで$Y_i$は$x\in X_i$と$i$の順序対$(x,i)$全体からなる集合である.
 
-    % 左側のメインパス（赤色の全順序部分集合を含む）
-    \node[dot] (L1) at (0,0) {};
-    \node[dot] (L2) at (0.3,0.7) {};
-    
-    % 赤い鎖（全順序部分集合）
-    \node[reddot] (R1) at (0.6,1.4) {};
-    \node[reddot] (R2) at (1.1,1.9) {};
-    \node[reddot] (R3) at (1.7,2.3) {};
-    \node[reddot] (R4) at (2.2,2.6) {};
-    \node[reddot] (R5) at (2.7,2.9) {};
-    \node[reddot] (R6) at (3.2,3.2) {}; % 上限
+    直和$\coprod_i X_i$の要素は$(x,i)$と表されるが, $x$は$X=\bigcup_i X_i$から選んだ要素$x$を表し, $i$はその$x$を$\qty{X_i}$のうちどの集合$X_i$から選んだかを表す.
+\end{deftcolorbox}
+集合$A,B$の直和$A \oplus B$について, $A\cap B = \emptyset$の場合と$A\cap B \neq \emptyset$の場合に分けて考えよう.
 
-    % 赤い鎖のさらに先
-    \node[dot] (L3) at (3.6,3.7) {};
-    \node[dot] (L4) at (4.0,4.2) {};
-    \node[bluedot] (M1) at (4.4,4.8) {}; % 極大元1
+(i)$A\cap B = \emptyset$の場合
 
-    % 枝分かれ1（赤い鎖から下へ）
-    \node[dot] (B1_1) at (1.5,1.2) {};
-    \node[dot] (B1_2) at (1.9,0.5) {};
-    \node[dot] (B1_3) at (2.2,-0.2) {};
+$A \oplus B$の要素は$(x,i)$とおけるが, $A\cap B = \emptyset$より, $x$が定まれば$i$も定まる. 
+すなわち$A \oplus B \sim A \cup B$である. このことから, $A,B$の直和を$A \cup B$で表すこともある.
 
-    % 枝分かれ2（赤い鎖の中間から右へ）
-    \node[dot] (B2_1) at (3.1,2.4) {};
-    \node[dot] (B2_2) at (3.5,1.7) {};
-    \node[dot] (B2_3) at (3.8,1.0) {};
-    \node[dot] (B2_4) at (4.2,0.3) {};
+$A\cap B \neq \emptyset$の場合
 
-    % 枝分かれ3（右上の極大元へ）
-    \node[dot] (B3_1) at (4.0,2.6) {};
-    \node[dot] (B3_2) at (4.4,2.1) {};
-    \node[dot] (B3_3) at (4.5,3.3) {};
-    \node[dot] (B3_4) at (5.0,3.1) {};
-    \node[bluedot] (M2) at (4.5,3.9) {}; % 極大元2
-
-    % 枝分かれ4（一番右側の長い枝）
-    \node[dot] (B4_1) at (5.3,2.5) {};
-    \node[dot] (B4_2) at (5.7,3.0) {};
-    \node[dot] (B4_3) at (6.1,3.8) {};
-    \node[bluedot] (M3) at (6.3,4.5) {}; % 極大元3
-
-    % --- 線をつなぐ ---
-    \draw[path_line] (L1) -- (L2) -- (R1);
-    \draw[red_line] (R1) -- (R2) -- (R3) -- (R4) -- (R5) -- (R6);
-    \draw[path_line] (R6) -- (L3) -- (L4) -- (M1);
-    
-    \draw[path_line] (R2) -- (B1_1) -- (B1_2) -- (B1_3);
-    \draw[path_line] (R4) -- (B2_1) -- (B2_2) -- (B2_3) -- (B2_4);
-    
-    \draw[path_line] (B2_1) -- (B3_1) -- (B3_2);
-    \draw[path_line] (B3_1) -- (B3_3) -- (M2);
-    \draw[path_line] (B3_3) -- (B3_4) -- (B4_1) -- (B4_2) -- (B4_3) -- (M3);
-
-    % --- ラベルと矢印 ---
-    
-    % 全順序部分集合
-    \node[red, align=center, font=\small] at (0.2, 2.5) {全順序\\部分集合};
-    
-    % 上限
-    \draw[<- ,red, thick] (R6) ++(0.1,0.2) -- ++(0.5,0.5) node[left, font=\small] {上限};
-    
-    % 極大元
-    \node[blue, font=\small, above=2pt] at (M1) {極大元};
-    \node[blue, font=\small, above=2pt] at (M2) {極大元};
-    \node[blue, font=\small, above=2pt] at (M3) {極大元};
-
-\end{tikzpicture}
-
+$A \oplus B$の要素$(x,i)$について, $x$という情報だけでは$A$からとったものか$B$からとったものかがわからないことがあるので, 添字$i$を示す必要がある.
 \end{document}
