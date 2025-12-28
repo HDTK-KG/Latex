@@ -1,0 +1,81 @@
+\section{群$\cdot$環$\cdot$体}
+
+群$\cdot$環$\cdot$体とはある条件を満たす集合と演算のセットのことである.
+
+\definecolor{op-orange}{HTML}{E67E22}
+
+\begin{tikzpicture}[line width=2.5pt, rounded corners=40pt]
+
+    % --- 外側の枠: 群 (Group) ---
+    \draw (2.5,9) -- (10,9) -- (10,0) --(0,0) -- (0,9) -- (1.5,9);
+    \node[scale=2.5] at (2, 9) {\textbf{群}};
+    
+    % 群の要素と演算
+    \node[scale=3, op-orange] at (0.8, 7.2) {\textbf{+}};
+    \node[scale=3, op-orange] at (0.8, 6.2) {\textbf{--}};
+    \node[scale=2.2] at (8, 9.7) {\textbf{自然数}};
+
+    % --- 中間の枠: 環 (Ring) ---
+    \draw (4,7.8) -- (9.5,7.8) -- (9.5,0.5) --(1.5,0.5) -- (1.5,7.8) -- (3,7.8);
+    \node[scale=2.5] at (3.5, 7.8) {\textbf{環}};
+    
+    % 環の要素と演算
+    \node[scale=3, op-orange] at (2.3, 5.2) {\textbf{×}};
+    \node[scale=2.2] at (7.8, 7.1) {\textbf{整数}};
+
+    % --- 内側の枠: 体 (Field) ---
+    \draw (5.5,6.2) -- (9,6.2) -- (9,1) --(3,1) -- (3,6.2) -- (4.5,6.2);
+    \node[scale=2.5] at (5, 6.2) {\textbf{体}};
+    
+    % 体の要素と演算
+    \node[scale=3, op-orange] at (3.8, 4.1) {\textbf{÷}};
+    \node[scale=2] at (6, 5.2) {\textbf{有理数}};
+    \node[scale=2] at (7.5, 3.8) {\textbf{実数}};
+    \node[scale=2] at (6, 2.5) {\textbf{複素数}};
+
+\end{tikzpicture}
+
+\begin{deftcolorbox}[title = 群(Group)]
+    集合$G$と演算$\times$が群となるのは以下の条件を満たすときである.
+    \begin{enumerate}
+        \item 単位元 : $\exists e\ \text{s.t.}\ \forall a \in G,\ ae = ea = a$
+        \item 逆元 : $\forall a \in G, \exists a^{-1} \in G\ \text{s.t.}\ a a^{-1} = a^{-1} a = e$
+        \item 結合法則 : $\forall a,b,c \in G,\ (ab)c = a(bc)$
+    \end{enumerate}
+    さらに以下の交換法則が成り立つとき, \textbf{Abelian群}(可換群)と呼ばれる.
+    \begin{enumerate}
+        \item[(4)] 交換法則 : $\forall a,b \in G,\ ab = ba$
+    \end{enumerate}
+\end{deftcolorbox}
+
+\begin{deftcolorbox}[title = 環(Ring)]
+    集合$A$と演算$+,\times$が環となるのは以下の条件を満たすときである.
+    \begin{enumerate}
+        \item 和に関して可換群 : $A$は$+$に関して可換群となる. (以下$+$に関する単位元を0と書く)
+        \item 積の結合法則 : $\forall a,b,c \in A,\ (ab)c = a(bc)$
+        \item 分配法則 : $\forall a,b,c \in A,\ a(b+c) = ab + ac,\ (a+b)c = ac + bc$
+        \item 積の単位元 : $\exists 1\ \text{s.t.}\ \forall a \in G,\ a1 = 1a = a$
+    \end{enumerate}
+    $A$の任意の元$a,b$が可換のとき, $A$を\textbf{可換環}という.
+
+    $a\in A$が積に関して逆元を持つとき, $a$を\textbf{可逆元}または\textbf{単元}という.
+
+    $A$の単元全体の集合を$A$の\textbf{乗法群}といい, $A^{\times}$と表す.
+\end{deftcolorbox}
+$\forall a \in A$について, $0a = (0+0)a = 0a + 0a$より, $0a = 0$である.
+
+$1 = 0$のとき, $A=\qty{0}$となる, この環を\textbf{零環}あるいは\textbf{自明な環}という.
+
+\begin{deftcolorbox}[title = 体(Field)]
+    集合$K$と演算$+,\times$が体となるのは以下の条件を満たすときである.
+    \begin{enumerate}
+        \item 環 : $K$は演算$+,\times$に関して環となる
+        \item 零環でない : $1\neq 0$
+        \item 可逆 : 任意の$a(\neq 0) \in K$は可逆元である
+        \item 可換 : $K$は可換環
+    \end{enumerate}
+    
+    (1)(2)(3)が成り立つとき, $K$は\textbf{可除環}という.
+
+\end{deftcolorbox}
+
