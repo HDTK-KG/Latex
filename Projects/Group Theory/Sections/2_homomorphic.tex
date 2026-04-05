@@ -82,7 +82,7 @@
     \begin{equation*}
         \forall g \in G, \forall h \in H,\ ghg^{-1} \in H
     \end{equation*}
-    のとき, $H$を$G$の\textbf{正規部分群}という.
+    のとき, $H$を$G$の\textbf{正規部分群}といい, $H \triangleright G$と書く.
 
     $H$が$G$の正規部分群のとき, $gH = Hg$となる.
 \end{deftcolorbox}
@@ -108,7 +108,7 @@
     \end{equation*}
 \end{theotcolorbox}
 
-\begin{theotcolorbox}[title = 準同型定理, sidebyside, righthand width = 4cm, lower separated=false]
+\begin{theotcolorbox}[title = 準同型定理 (第一同型定理), sidebyside, righthand width = 4cm, lower separated=false]
     $G, H$を群, 写像$\phi:G \rightarrow H$を準同型とする.
 
     \begin{align*}
@@ -149,4 +149,74 @@
     より$\psi$は全射
 
     以上より, $\psi:G/\mathrm{Ker}(\phi) \rightarrow \mathrm{Im}(\phi)$は同型
+\end{proof}
+
+\begin{theotcolorbox}[title = 第二同型定理]
+    $G$を群, $H, N$を$G$の部分群で, 特に$N$は$G$の正規部分群とする.
+
+    このとき, 以下が成り立つ.
+
+    \begin{enumerate}
+        \item $HN$は$G$の部分群であり, $HN=NH$
+        \item $H \cap N$は$H$の正規部分群であり, $HN/N \simeq H/H \cap N$
+    \end{enumerate}
+\end{theotcolorbox}
+
+\begin{proof}
+    \large{1.} $HN$の任意の要素は$hn,\ h \in H,\ n \in N$とおける.
+
+    $1_G \in HN$より, $HN$は単位元を持つ.
+    
+    $\forall h_1n_1, h_2n_2 \in HN\ (h_1, h_2 \in H,\ n_1, n_2 \in N)$において, 
+    \begin{equation*}
+        (h_1n_1)(h_2n_2) = h_1 h_2 n_1' n_2 \in HN \ (\because n_1' \coloneq h_2^{-1} n_1 h_2 \in N)
+    \end{equation*}
+    より$HN$は積について閉じている. ここで$h_2 = h_1^{-1}, n_2 = h_1 n_1^{-1} h_1^{-1}$
+    とすれば
+    \begin{equation*}
+        (h_1n_1)(h_2n_2) = 1_G
+    \end{equation*}
+    より, 逆元は存在する. 
+
+    $\forall h \in H$について, $hN = Nh$より, $HN=NH$
+
+    \large{2.} $N$は$HN$の正規部分群であることは明らか. よって$HN/N$は群である.
+
+    自然な写像$\phi:H \rightarrow HN/N,\ \phi(h) = hN$について, $\mathrm{Ker}(\phi) = H \cap N$なので, 
+    
+    準同型定理より
+    \begin{equation*}
+        H/H \cap N = HN/N
+    \end{equation*}
+\end{proof}
+
+\begin{theotcolorbox}[title = 第三同型定理]
+    $G$を群, $N \subset N'$を$G$の正規部分群とする.
+
+    このとき, 以下が成り立つ.
+    \begin{enumerate}
+        \item 準同型$\phi:G/N \rightarrow G/N'$で$\phi(xN)=xN'$となるものが存在する.
+        \item $N'/N$は$G/N$の正規部分群であり, $(G/N)/(N'/N) \simeq G/N'$
+    \end{enumerate}
+\end{theotcolorbox}
+
+\begin{proof}
+    \large{1.} 写像$\phi:G/N \rightarrow G/N',\ \phi(xN)=xN'$について,
+    
+    $\forall y \in xN$について$\exists n \in N,\ s.t.\ y = xn$ なので, 
+    
+    $yN' = xnN' = xN'\ (\because n \in N')$なので$\phi$はwell-defined.
+    
+    $\forall x, x' \in G$について
+    \begin{equation*}
+        \phi((xN)(x'N)) = \phi(xx'N) = xx'N' = (xN')(x'N') = \phi(xN)\phi(x'N)
+    \end{equation*}
+    より, $\phi$は準同型
+
+    \large{2.} $\mathrm{Ker}(\phi) = \qty{ xN \mid x \in N' }$となるが, これは$N'/N$に他ならない.
+
+    よって準同型定理より,
+    \begin{equation*}
+        (G/N)/(N'/N) \simeq G/N'
+    \end{equation*}
 \end{proof}
