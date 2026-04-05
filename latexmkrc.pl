@@ -26,5 +26,3 @@ if ($^O eq 'linux') {
 } else {
     $pdf_previewer = "start %S";
 }
-
-

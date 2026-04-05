@@ -11,9 +11,11 @@
         "-interaction=nonstopmode",
         "-halt-on-error",
         "%DOC%",
-        "$ENV{'TEXINPUTS'}='./styles:'",
+        "$ENV{'TEXINPUTS'}='./styles;'",
     ],
-    "env": {}
+    "env": {
+        "TEXINPUTS": "./styles//;"
+    }
     },
     {
         "name": "bibtex",
@@ -72,10 +74,6 @@
     "*.snm",
     "*.vrb",
     ],
-    "latex-workshop.latex.texINPUTS": [
-        "./styles//"
-    ] ,
-    "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.clean.enabled": true, //上とぶつからないかな？auxiliaryファイル削除
     "latex-workshop.latex.autoBuild.run": "never"

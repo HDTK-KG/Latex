@@ -1,0 +1,152 @@
+\section{準同型$\cdot$同型}
+
+二つの群$G_1, G_2$が与えられたときに, これらが本質的に同じかどうかを定式化したい. 
+そのために, $G_1$から$G_2$へ移す写像$\phi$を考える
+
+\begin{deftcolorbox}[title=準同型$\cdot$同型]
+    群$G_1, G_2$と写像$\phi:G_1 \rightarrow G_2$について
+
+    \begin{enumerate}
+        \item 準同型:$\forall x,y\in G_1,\ \phi(xy)=\phi(x)\phi(y)$のとき$\phi$は\textbf{準同型}
+        \item 同型:$\phi$が準同型かつ, $\phi$が逆写像を持ち, 逆写像も準同型のとき$\phi$は\textbf{同型}.
+        さらにこのような$\phi$が存在するなら, $G_1, G_2$は\textbf{同型}であるといい, $G_1 \simeq G_2$と書く.
+        \item 核:$\mathrm{Ker} (\phi) = \qty{x \in G_1 \mid \phi(x) = 1_{G_2}}$を$\phi$の\textbf{核}という.
+        \item 像:$\mathrm{Im} (\phi) = \qty{ \phi(x) \mid x \in G_1}$を$\phi$の\textbf{像}という.
+    \end{enumerate}
+\end{deftcolorbox}
+
+\begin{theotcolorbox}
+    $\phi:G_1 \rightarrow G_2$が準同型で全単射の時, $\phi$は同型
+\end{theotcolorbox}
+
+\begin{theotcolorbox}
+    $\phi:G_1 \rightarrow G_2$が準同型のとき:$\phi$が単射$\Leftrightarrow\ \mathrm{Ker}(\phi)={1_{G_1}}$
+\end{theotcolorbox}
+
+\begin{deftcolorbox}[title=自己同型群]
+    $G$を群とする
+    \begin{enumerate}
+        \item 自己同型:$G$から$G$
+        \item 自己同型群:自己同型全体の集合$\mathrm{Aut}G$について, $\phi, \psi \in \mathrm{Aut}G$の積$\phi \psi\coloneq \phi \circ \psi$と定義すると$\mathrm{Aut}G$は群となる.
+
+        $\mathrm{Aut}G$を$G$の\textbf{自己同型群}という.
+        \item 内部自己同型:$G$の自己同型のうち, $i_g : G\rightarrow G,\ i_g(h) = ghg^{-1}$の形をしたものを\textbf{内部自己同型}という.
+        \item 外部自己同型:$G$の自己同型のうち, 内部自己同型でないものを\textbf{外部自己同型}という.
+        \item 共役:$h_1, h_2 \in G$について, $\exists g \in G ,\ s.t. h_1 = i_g(h_2)$のとき$h_1, h_2$は\textbf{共役}
+        \item 内部自己同型群:内部自己同型全体の集合を\textbf{内部自己同型群}といい, $\mathrm{Inn}G$と書く.
+
+        写像$\phi:G \rightarrow \mathrm{Aut}G,\ \phi(g) = i_g$としたとき, $\phi$は準同型であり, $\mathrm{Im}(\phi) \subset \mathrm{Aut}G$が内部自己同型群である.
+    \end{enumerate}
+\end{deftcolorbox}
+
+\begin{deftcolorbox}[title = 正規部分群]
+    $G$を群, $H$を$G$の部分群とする.
+    \begin{enumerate}
+        \item 左剰余類:$g \in G$について, $gH \coloneq \qty{gh \mid h \in H }$を$g$の$H$による\textbf{左剰余類}という.
+        
+        左剰余類全体の集合を$G/H$と書く.
+        \item 右剰余類:$g \in G$について, $Hg \coloneq \qty{hg \mid h \in H }$を$g$の$H$による\textbf{右剰余類}という.
+        
+        右剰余類全体の集合を$H\backslash G$と書く.
+    \end{enumerate}
+\end{deftcolorbox}
+
+\begin{theotcolorbox}
+    \begin{equation*}
+        \qty|H| = \qty|gH| = \qty|Hg|
+    \end{equation*}
+\end{theotcolorbox}
+
+\begin{theotcolorbox}[title = ラグランジュの定理]
+    $ (G:H) \coloneq \qty|G/H| = \qty| H\backslash G|$とする.
+
+    \begin{equation*}
+        \qty|G| = (G:H)\qty|H|
+    \end{equation*}
+\end{theotcolorbox}
+
+\begin{deftcolorbox}[title = 両側剰余類]
+    $G$を群, $H, K$を$G$の部分群とする.
+    \begin{equation*}
+        HgK \coloneq \qty{hgk \mid h \in H, k \in K}
+    \end{equation*}
+    を$g$の$H, K$による両側剰余類という.
+\end{deftcolorbox}
+
+\begin{theotcolorbox}[title = ブリューア分解]
+    
+\end{theotcolorbox}
+
+\begin{deftcolorbox}[title = 正規部分群]
+    $G$を群, $H$を$G$の部分群とする
+    \begin{equation*}
+        \forall g \in G, \forall h \in H,\ ghg^{-1} \in H
+    \end{equation*}
+    のとき, $H$を$G$の\textbf{正規部分群}という.
+
+    $H$が$G$の正規部分群のとき, $gH = Hg$となる.
+\end{deftcolorbox}
+
+\begin{theotcolorbox}
+    $G_1, G_2$が群で$\phi: G_1 \rightarrow G_2$が準同型のとき, $\mathrm{Ker}(\phi)$は$G_1$の正規部分群.
+\end{theotcolorbox}
+
+\begin{theotcolorbox}
+    $G$を群, $H$を$G$の正規部分群とする. well-definedな演算
+    \begin{equation*}
+        G/H \times G/H \rightarrow G/H,\ (g_1H)(g_2H) \coloneq g_1g_2 H
+    \end{equation*}
+    が定義でき, $G/H$は群となる.
+\end{theotcolorbox}
+
+\begin{theotcolorbox}
+    $G$を群, $H$を$G$の正規部分群とする.
+    
+    自然な写像 $\pi : G \rightarrow G/H,\ \pi(g) = gH$は全射準同型であり
+    \begin{equation*}
+        \mathrm{Ker}(\pi) = H
+    \end{equation*}
+\end{theotcolorbox}
+
+\begin{theotcolorbox}[title = 準同型定理, sidebyside, righthand width = 4cm, lower separated=false]
+    $G, H$を群, 写像$\phi:G \rightarrow H$を準同型とする.
+
+    \begin{align*}
+        G/\mathrm{Ker}(\phi) \simeq \mathrm{Im}(\phi)\\
+        \phi = \psi \circ \pi
+    \end{align*}
+
+    \tcblower % <--- これが左右の境界線になります
+
+    \centering
+    \begin{tikzcd}[ampersand replacement=\&]
+        G \arrow[r, "\phi"] \arrow[d, "\pi"'] \& H \\
+        G/\mathrm{Ker} \phi \arrow[ru, "\psi"', dashed] \& 
+    \end{tikzcd}
+\end{theotcolorbox}
+
+\begin{proof}
+    $\mathrm{Ker}(\phi)$は$G$の正規部分群なので, $G/\mathrm{Ker}(\phi)$は群である. 以下$N \coloneq \mathrm{Ker}(\phi)$とおく.
+    
+    $\forall g' \in g N$について$\exists n \in N,\ s.t.\ g' = gn$より
+    \begin{equation*}
+        \phi(g') = \phi(gn) = \phi(g)\phi(n) = \phi(g)1_H = \phi(g)
+    \end{equation*}
+    なのでwell-definedな写像$\psi:G/N \rightarrow \mathrm{Im}(\phi),\ \psi(gN) \coloneq \phi(g)$が定義できる.
+
+    $g_1, g_2 \in G$において
+    \begin{equation*}
+        \psi(g_1 N g_2 N) = \psi(g_1g_2N) = \phi(g_1g_2) = \phi(g_1)\phi(g_2) = \psi(g_1N) \psi(g_2N)
+    \end{equation*}
+    より$\psi$は準同型, 以下$\psi:G/N \rightarrow \mathrm{Im}(\phi)$が全単射であることを示す.
+
+    (単射):$\psi(gN) = 1_H$のとき, $\phi(g) = 1_H$より, $g \in N$, よって$gN = N = 1_{G/N}$より, $\psi$は単射
+
+    (全射):$\forall h \in \mathrm{Im}(\phi)$について, $\exists g \in G\ s.t.\ \phi(g) = h$なので
+    \begin{equation*}
+        \psi(gN) = h
+    \end{equation*}
+    より$\psi$は全射
+
+    以上より, $\psi:G/\mathrm{Ker}(\phi) \rightarrow \mathrm{Im}(\phi)$は同型
+\end{proof}
