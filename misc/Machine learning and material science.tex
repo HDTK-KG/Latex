@@ -1,0 +1,87 @@
+\documentclass[a4paper,11pt]{jlreq}
+
+\usepackage{mylualatexstyle}
+
+
+\usepackage{fontawesome5} % アイコン用パッケージ（任意）
+
+\newcommand{\roundavatar}[2][12mm]{%
+\begin{tikzpicture}
+  \fill[white] (0,0) circle (6mm);
+
+\begin{scope}
+  \clip (0,0) circle (5.2mm);
+  \node[anchor=center] at (0,0)
+    {\includegraphics[width=10.4mm,height=10.4mm]{#2}};
+\end{scope}
+
+\draw[line width=1pt,gray]
+  (0,0) circle (6mm);
+\end{tikzpicture}%
+}
+
+\newtcolorbox{chatbox}[1]{
+  enhanced,
+  colback=violet!10,
+  colframe=violet!10,
+  boxrule=0pt,
+  arc=3mm,
+  left=3mm,
+  top=2mm,
+  overlay={
+    \node[anchor=north]
+      at ([xshift=-8mm,yshift=-2mm]frame.north west)
+      {\roundavatar[12mm]{#1}};
+  }
+}
+
+\newtcolorbox{userchat}[1]{
+  enhanced,
+  colback=blue!10,
+  colframe=blue!10,
+  boxrule=0pt,
+  arc=3mm,
+  right=15mm,     % 右側にアイコン分の余白
+  left=2mm,
+  top=2mm,
+  overlay={
+    \node[anchor=north]
+      at ([xshift=8mm,yshift=-2mm]frame.north east)
+      {\roundavatar[12mm]{#1}};
+  }
+}
+
+%タイトル
+\title{機械学習と物性科学\\ 最終レポート課題}
+\author{久我 英理}
+\date{2026年6月6日}
+
+
+
+\begin{document}
+
+%タイトル
+\maketitle
+
+\section{マルコフチェーンモンテカルロ法とIsingモデル}
+\vskip.5\baselineskip
+なぜこのテーマを選んだか:
+
+講義では, 確率分布関数$P(x)$が与えられた時に, それに従うサンプルを生成する手段としてマルコフチェーンモンテカルロ法(MCMC)があると教わった. 
+講義内ではどのような確率過程に従い連鎖していくかについての説明はあったが, なぜそのような連鎖により確率分布に従うサンプルが生成できるのかは曖昧であった. 
+単純かつ可視化しやすい例として, 高次元のIsingモデルのモンテカルロ法を例に上げ, MCMCをより理解したいと思った.
+
+
+\begin{userchat}{student.png}
+tcolorbox の使い方を知りたいです。\\
+いいですね\\
+よくないですよ
+\end{userchat}
+
+\begin{chatbox}{gemini.png}
+こんにちは！\\
+頑張れ!\\
+うどん
+\end{chatbox}
+
+\end{document}
