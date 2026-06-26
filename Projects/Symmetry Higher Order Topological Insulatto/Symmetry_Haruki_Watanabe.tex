@@ -1,0 +1,125 @@
+% !TEX program = lualatex
+\documentclass[12pt]{article}
+\usepackage{luatexja}
+\usepackage{amsmath,amssymb}
+\usepackage{braket}
+\usepackage{bm}
+\usepackage[margin=25mm]{geometry}
+
+\title{対称性指標の基礎から高次トポロジカル絶縁体への応用まで}
+\author{}
+\date{}
+
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+
+\begin{document}
+\maketitle
+
+\section{空間群・点群の既約表現}
+
+\subsection{空間群の基礎事項}
+
+\emph{3次元ユークリッド群} : 連続並進, 連続回転, 空間反転の組み合わせ
+
+\emph{空間群 $G$} : 離散並進部分群を持つ3次元ユークリッド群の部分群
+$g \in G$ の作用は
+\begin{equation}
+ g(\vect{x}) = p_g \vect{x} + \vect{t}_g
+\end{equation}
+と表され,
+\begin{equation}
+ p_{g_1 g_2} = p_{g_1} p_{g_2}, \qquad
+ \vect{t}_{g_1 g_2} = p_{g_1} \vect{t}_{g_2} + \vect{t}_{g_1}.
+\end{equation}
+
+230種類の空間群 (3次元方向の離散対称性)
+80種類のレイヤー群 (2次元方向の離散対称性しか持たない)
+75種類のロッド群 (2次元方向の離散対称性しか持たない)
+
+例えば $P6/mmm$ の格子の例として, $xy$ 平面上の正六角形の頂点を並進操作で複製して格子を作ることを考えると, 離散並進軸は $xyz$ 軸, $xy$ 軸, $z$ 軸が考えられ, どれも $P6/mmm$ の対称性を満たしている. つまり $P6/mmm$ は空間群にもレイヤー群にもロッド群にもなれる.
+
+\emph{点群 $P$} : 空間群のうち不動点を持つもの, つまり単位行列, 空間反転, 角度 $(2\pi m)/n\ (n=2,3,4,6)$ の回転及びそれらの積からなる. 全部で32種類ある. 原点を不動点とすると $g \in P$ の作用は
+\begin{equation}
+ g(\vect{x}) = p_g \vect{x}
+\end{equation}
+となる.
+
+\emph{離散並進群} $T$ : 基本並進ベクトル $\vect{a}_i$ で特徴づけられる. 並進ベクトル $\vect{R}$ だけ並進する操作を $T_{\vect{R}}$ で表す. 基本並進ベクトルで張られる多面体を単位胞 (UC) という.
+
+空間群 $G$ について, 写像 $\Phi(g)$ は $g \in G$ のうち並進部分を取り除くものとする. このとき $\Phi$ は準同型写像となる.
+\begin{equation}
+ \ker\Phi = T_G, \qquad \mathrm{im}\,\Phi = P_G.
+\end{equation}
+ここで $T_G$ は $G$ の並進部分群で正規部分群, $P_G$ は $G$ から並進部分を取り除いた点群である. (例) $G = P2_1 2_1 2_1$ のとき $P_G = 222$.
+
+準同型定理より
+\begin{equation}
+ G / T_G = P_G.
+\end{equation}
+
+空間群 $G$ の元 $g$ は積集合 $P \times T$ の元 $(p, T_{\vect{R}})$ を用いて表せる. このとき $g_1$ と $g_2$ の積は
+\begin{equation}
+ (p_1, T_{\vect{R}_1}) (p_2, T_{\vect{R}_2}) = (p_1 p_2,
+ T_{\vect{R}_1 + p_1 \vect{R}_2})
+\end{equation}
+なる半直積 $\rtimes$ となる.
+
+\emph{シンモーフィック空間群} : 空間群 $G$ がシンモーフィックであるとは,
+\begin{equation}
+ G = P_G \rtimes T_G
+\end{equation}
+となることである. つまり $\forall g = (p, T_{\vect{R}}) \in G$ において $T_{\vect{R}} \in T$ より, らせん操作や映進操作のような基本並進ベクトルより小さい並進を伴う操作を持たないものをいう.
+シンモーフィック空間群は230個中73個ある. これが点群の個数32より多い理由としては, 例えば $222$ は $P222,\ I222,\ F222,\ C222$ を空間群として含む. これらはそれぞれ Orthorhombic の単純, 体心, 面心, 底心格子を表しており, ブラベ格子は同じだが基本並進ベクトルが異なる.
+
+\emph{実空間における軌道} $\Lambda_{\vect{x}}$ : $\Lambda_{\vect{x}} = \{g(\vect{x}) \mid g \in G\}$ を点 $\vect{x}$ の $G$ のもとでの軌道という. このうち単位胞 UC に属するものを $\Lambda_{\vect{x}}^{\mathrm{UC}}$ とする. 特に $\Lambda_{\vect{x}}^{\mathrm{UC}} = \{\vect{x}\}$ なる不動点 $\vect{x}$ が存在する時, $G$ はシンモーフィックである. $\Lambda_{\vect{x}}^{\mathrm{UC}}$ は $\vect{x}$ によって様々なパターンを生成し, 本質的な違いはワイコフ位置により分類される. この分類を記述するために小群 $H_{\vect{x}}$ を導入する.
+
+\emph{小群} $H_{\vect{x}}$ : $H_{\vect{x}} = \{h \in G \mid h(\vect{x}) = \vect{x}\}$ を $\vect{x}$ の小群という, つまり $\vect{x}$ を不動点とする $G$ の部分群である. $H_{\vect{x}}$ の対称性をサイトシンメトリーという.
+\begin{equation}
+ |\Lambda_{\vect{x}}^{\mathrm{UC}}|\,|H_{\vect{x}}| = |G / T_G| = |P_G|.
+\end{equation}
+$|P_G|$ は元となる点群の位数であり, 48 の約数のいずれかである. 小群を用いて同値関係 $\vect{x} \sim \vect{y}$ を $H_{\vect{x}}, H_{\vect{y}}$ が共役すなわち
+\begin{equation}
+ \exists g, \ H_{\vect{y}} = g H_{\vect{x}} g^{-1}
+\end{equation}
+と定める. これは $H_{\vect{y}} g \vect{x} = g H_{\vect{x}} \vect{x} = g \vect{x}$ を表し, $g \vect{x}, \vect{y}$ が同じ小群を持つことを表している. この同値関係による分類を \emph{ワイコフ位置} という. 一番対称性の低いワイコフ位置 $\vect{x} = (x,y,z)$ においては $H_{\vect{x}} = \{e\}$ であり, $\Lambda_{\vect{x}}^{\mathrm{UC}}$ の数は $|P_G|$ すなわち元となる点群の位数に等しい.
+
+\subsection{波数空間}
+
+以下, 状態ベクトルに作用する演算子として操作の表現を表す.
+
+\emph{並進操作} : $T_{\vect{R}} \in T$ の表現
+\begin{align}
+ \hat{T}_{\vect{R}} &= e^{-i \hat{\vect{k}} \cdot \vect{R}}, \\
+ \hat{T}_{\vect{R}} \ket{\vect{x}} &= \ket{\vect{x} + \vect{R}}, \\
+ \hat{T}_{\vect{R}} \ket{\vect{k}} &= e^{-i \vect{k} \cdot \vect{R}} \ket{\vect{k}}.
+\end{align}
+
+\emph{回転・反転操作} : $p \in P$ の表現
+\begin{align}
+ \hat{p} &= e^{-i \theta_p \vect{n}_p \cdot \hat{\vect{L}}}, \\
+ \hat{p} \ket{\vect{x}} &= \ket{p \vect{x}}, \\
+ \hat{p} \ket{\vect{k}} &= \ket{p \vect{k}}.
+\end{align}
+
+\emph{空間群の元} : $g = (p,T_{\vect{R}})$ の表現
+\begin{align}
+ \hat{g} &= \hat{T}_{\vect{R}} \hat{p}, \\
+ \hat{g} \ket{\vect{x}} &= \ket{p \vect{x} + \vect{R}}, \\
+ \hat{g} \ket{\vect{k}} &= e^{-i \vect{k} \cdot \vect{R}} \ket{p \vect{k}}.
+\end{align}
+
+波数空間においては並進部分が効かない.
+ただし上の説明はスピンレスな場合において成り立つものであり, 半整数スピンが存在すると $SU(2)$ 回転に起因した位相の項が現れる.
+
+\emph{波数空間における軌道 (星)} $\mathcal{S}_{\vect{k}}$ :
+\begin{equation}
+ \mathcal{S}_{\vect{k}} = \{ g \vect{k} \in \mathrm{BZ} \mid g \in G \}
+\end{equation}
+は波数空間の場合の $G$ のもとでの軌道であり, 星と呼ぶ. 波数空間では並進操作は無視されるので, 元となる点群の星となる.
+
+\emph{波数空間における小群} $H_{\vect{k}}$ : $\vect{k} \in \mathrm{BZ}$ を不変に保つ $G$ の部分群を $\vect{k}$ の小群 $H_{\vect{k}}$ という. 実空間の場合と違い, $H_{\vect{k}}$ は並進群 $T_G$ を部分群に持つ.
+\begin{equation}
+ |\mathcal{S}_{\vect{k}}|\,|H_{\vect{k}} / T_G| = |G / T_G| = |P_G|.
+\end{equation}
+
+\end{document}

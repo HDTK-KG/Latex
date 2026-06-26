@@ -1,0 +1,38 @@
+\section{波数空間}
+
+以下, 状態ベクトルに作用する演算子として操作の表現を表す.
+
+\emph{並進操作} : $T_{\vect{R}} \in T$ の表現
+\begin{align}
+ \hat{T}_{\vect{R}} &= e^{-i \hat{\vect{k}} \cdot \vect{R}}, \\
+ \hat{T}_{\vect{R}} \ket{\vect{x}} &= \ket{\vect{x} + \vect{R}}, \\
+ \hat{T}_{\vect{R}} \ket{\vect{k}} &= e^{-i \vect{k} \cdot \vect{R}} \ket{\vect{k}}.
+\end{align}
+
+\emph{回転・反転操作} : $p \in P$ の表現
+\begin{align}
+ \hat{p} &= e^{-i \theta_p \vect{n}_p \cdot \hat{\vect{L}}}, \\
+ \hat{p} \ket{\vect{x}} &= \ket{p \vect{x}}, \\
+ \hat{p} \ket{\vect{k}} &= \ket{p \vect{k}}.
+\end{align}
+
+\emph{空間群の元} : $g = (p, T_{\vect{R}})$ の表現
+\begin{align}
+ \hat{g} &= \hat{T}_{\vect{R}} \hat{p}, \\
+ \hat{g} \ket{\vect{x}} &= \ket{p \vect{x} + \vect{R}}, \\
+ \hat{g} \ket{\vect{k}} &= e^{-i \vect{k} \cdot \vect{R}} \ket{p \vect{k}}.
+\end{align}
+
+波数空間においては並進部分が効かない.
+ただし上の説明はスピンレスな場合において成り立つものであり, 半整数スピンが存在すると $SU(2)$ 回転に起因した位相の項が現れる.
+
+\emph{波数空間における軌道 (星)} $\mathcal{S}_{\vect{k}}$ :
+\begin{equation}
+ \mathcal{S}_{\vect{k}} = \{ g \vect{k} \in \mathrm{BZ} \mid g \in G \}
+\end{equation}
+は波数空間の場合の $G$ のもとでの軌道であり, 星と呼ぶ. 波数空間では並進操作は無視されるので, 元となる点群の星となる.
+
+\emph{波数空間における小群} $H_{\vect{k}}$ : $\vect{k} \in \mathrm{BZ}$ を不変に保つ $G$ の部分群を $\vect{k}$ の小群 $H_{\vect{k}}$ という. 実空間の場合と違い, $H_{\vect{k}}$ は並進群 $T_G$ を部分群に持つ.
+\begin{equation}
+ |\mathcal{S}_{\vect{k}}|\,|H_{\vect{k}} / T_G| = |G / T_G| = |P_G|.
+\end{equation}
