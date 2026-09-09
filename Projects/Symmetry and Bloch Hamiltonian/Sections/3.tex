@@ -1,0 +1,72 @@
+\section{対称性とBloch Hamiltonian}
+
+\begin{theotcolorbox}[title = 対称操作$\hat{U}$に関して対称なときのBloch Hamiltonian]
+    $\hat{U}$は並進, 回転, 空間反転, 時間反転操作の積で表せるとする
+    \begin{equation*}
+        \hat{U}^{\dagger} \hat{\mathcal{H}} \hat{U} = \hat{\mathcal{H}}
+    \end{equation*}
+    Bloch Hamiltonian
+    \begin{equation*}
+        \hat{\mathcal{H}}_{\bm{k}} = e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{\mathcal{H}} e^{i\bm{k}\cdot \hat{\bm{x}}}
+    \end{equation*}
+    への変換を行うと
+    \begin{align*}
+        \hat{U}^{\dagger} \hat{\mathcal{H}}_{\bm{k}} \hat{U} & = \hat{U}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{\mathcal{H}} e^{i\bm{k}\cdot \hat{\bm{x}}} \hat{U}\\
+        & = \hat{U}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{U} \hat{\mathcal{H}} \hat{U}^{\dagger} e^{i\bm{k}\cdot \hat{\bm{x}}} \hat{U}
+    \end{align*}
+\end{theotcolorbox}
+
+\begin{theotcolorbox}[title = $\hat{U}$が時間反転操作を含まないとき]
+    $\hat{U}$に対応する3次元ベクトル上の操作は回転$R$と並進$\bm{a}$の組み合わせ
+    \begin{equation*}
+        U(\bm{x}) = R\bm{x} + \bm{a}
+    \end{equation*}
+    とかける, $\hat{U}$に関しては
+    \begin{equation*}
+        \hat{U}^{\dagger} \hat{\bm{x}} \hat{U} = R\hat{\bm{x}} + \bm{a}
+    \end{equation*}
+    より
+    \begin{align*}
+        \hat{U}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{U} & = e^{-i\bm{k}\cdot \bm{a}} e^{-i\bm{k}\cdot (R \hat{\bm{x}})}\\
+        & = e^{-i\bm{k}\cdot \bm{a}} e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}}\\
+        \hat{U}^{\dagger} e^{i\bm{k}\cdot \hat{\bm{x}}} \hat{U} & = e^{i\bm{k}\cdot \bm{a}} e^{i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}}
+    \end{align*}
+    よって
+    \begin{align*}
+        \hat{U}^{\dagger} \hat{\mathcal{H}}_{\bm{k}} \hat{U} & = (\hat{U}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{U}) \hat{\mathcal{H}} (\hat{U}^{\dagger} e^{i\bm{k}\cdot \hat{\bm{x}}} \hat{U})\\
+        & = (e^{-i\bm{k}\cdot \bm{a}} e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}}) \hat{\mathcal{H}} (e^{i\bm{k}\cdot \bm{a}} e^{i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}})\\
+        & = e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}} \hat{\mathcal{H}} e^{i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}}\\
+        & = \hat{\mathcal{H}}_{R^{-1}\bm{k}}
+    \end{align*}
+\end{theotcolorbox}
+
+\begin{theotcolorbox}[title = $\hat{U}$が時間反転操作を含むとき]
+    $\hat{U} = \hat{U'} \hat{\Theta}$と分解できる, ここで$\hat{U'}$は対応する3次元ベクトル上の操作は回転$R$と並進$\bm{a}$の組み合わせ
+    \begin{equation*}
+        U'(\bm{x}) = R\bm{x} + \bm{a}
+    \end{equation*}
+    とかける
+    \begin{align*}
+        \hat{U}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{U}  & = \hat{\Theta}^{\dagger} \hat{U'}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{U'} \hat{\Theta}\\
+        & = \hat{\Theta}^{\dagger} e^{-i\bm{k}\cdot \bm{a}} e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}} \hat{\Theta}
+    \end{align*}
+    ここで
+    \begin{align*}
+        & \hat{\Theta}^{\dagger} e^{-i\bm{k}\cdot \bm{a}} e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}} \hat{\Theta} (a\ket{\bm{x}} \ket{\bm{s}(\theta, \varphi)})\\
+        = & \hat{\Theta}^{\dagger} e^{-i\bm{k}\cdot \bm{a}} e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}} (a^{\ast} \ket{\bm{x}} e^{-i\varphi} \ket{\bm{s}(\theta + \pi , \phi)})\\
+        = - & \hat{\Theta} \qty( e^{-i\bm{k}\cdot \bm{a}} e^{-i (R^{-1}\bm{k}) \cdot \bm{x}} a^{\ast} e^{-i\varphi}) \ket{\bm{x}} \ket{\bm{s}(\theta + \pi , \phi)}\\
+        = & - \qty( e^{i\bm{k}\cdot \bm{a}} e^{i (R^{-1}\bm{k}) \cdot \bm{x}} a e^{i\varphi}) \ket{\bm{x}} e^{-i\varphi} \ket{\bm{s}(\theta + 2\pi , \phi)}\\
+        = & e^{i\bm{k}\cdot \bm{a}} e^{i (R^{-1}\bm{k}) \cdot \bm{x}} (a\ket{\bm{x}} \ket{\bm{s}(\theta, \varphi)})
+    \end{align*}
+    なので
+    \begin{equation*}
+        \hat{U}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{U} = e^{i\bm{k}\cdot \bm{a}} e^{i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}}
+    \end{equation*}
+    よって
+    \begin{align*}
+        \hat{U}^{\dagger} \hat{\mathcal{H}}_{\bm{k}} \hat{U} & = (\hat{U}^{\dagger} e^{-i\bm{k}\cdot \hat{\bm{x}}} \hat{U}) \hat{\mathcal{H}} (\hat{U}^{\dagger} e^{i\bm{k}\cdot \hat{\bm{x}}} \hat{U})\\
+        & = \qty(e^{i\bm{k}\cdot \bm{a}} e^{i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}}) \hat{\mathcal{H}} \qty(e^{-i\bm{k}\cdot \bm{a}} e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}})\\
+        & = e^{i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}} \hat{\mathcal{H}} e^{-i (R^{-1}\bm{k}) \cdot \hat{\bm{x}}}\\
+        & = \hat{\mathcal{H}}_{- R^{-1}\bm{k}}
+    \end{align*}
+\end{theotcolorbox}

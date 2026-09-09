@@ -1,0 +1,23 @@
+\section{対称性とエネルギー縮退}
+
+ハミルトニアン$\hat{\mathcal{H}}$が群$G$の対称性を持つ, $g$に対応する表現を$\hat{C}(g)$とする.
+$V = \mathrm{Span}\qty{\ket{\psi_1}, \cdots ,\ket{\psi_n}}$が群$G$の既約表現であるとは,
+\begin{equation*}
+    \forall g \in G,\ \hat{C}(g) V \subset V
+\end{equation*}
+を満たし, 以下のような部分空間$W \subset V$が存在しないことである。
+\begin{equation*}
+    \forall g \in G,\ \hat{C}(g) W \subset W
+\end{equation*}
+
+軌道混成:Schurの補題より, $V$上において$\hat{\mathcal{H}}=E\hat{1}$となるため, エネルギーは空間$V$で$n$重縮退する.
+
+\begin{theotcolorbox}[title = バンド構造での縮退]
+    波数$\vec{k}\in \mathrm{BZ}$について, 小群$G_k \subset G$は以下を満たす
+    \begin{equation*}
+        \forall g \in G_k,\ g(\vec{k}) \equiv \vec{k}
+    \end{equation*}
+    このとき$\mathcal{H}_k$と$G_k$は可換なので
+    $V = \mathrm{Span}\qty{\ket{u_1(\vec{k})}, \cdots ,\ket{u_n(\vec{k})}}$が$G_k$の既約表現なら
+    $\vec{k}$点で$n$重縮退する
+\end{theotcolorbox}

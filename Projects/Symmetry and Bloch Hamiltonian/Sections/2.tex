@@ -1,0 +1,56 @@
+\section{$\frac{1}{2}$スピン系の演算子}
+\begin{deftcolorbox}[title = 並進演算子$\hat{T}_{\bm{a}}$]
+$\bm{a}$方向への並進
+\begin{align*}
+    \hat{T}_{\bm{a}} &= e^{-i \bm{a} \cdot \hat{\bm{p}}} \otimes \hat{1}_{\mathrm{spin}}\\
+    \hat{T}_{\bm{a}}^{\dagger} \hat{\bm{x}} \hat{T}_{a} & = \hat{\bm{x}} + \bm{a}\\
+    \hat{T}_{\bm{a}}^{\dagger} \hat{\bm{p}} \hat{T}_{a} & = \hat{\bm{p}}\\
+    \hat{T}_{\bm{a}}^{\dagger} \hat{\bm{\sigma}} \hat{T}_{a} & = \hat{\bm{\sigma}}\\
+    \hat{T}_{\bm{a}} \ket{\bm{x}}\ket{\bm{s}} &= \ket{\bm{x} + \bm{a}}\ket{\bm{s}}
+\end{align*}
+波動関数は$\psi(\bm{x}) \rightarrow \psi(\bm{x} - \bm{a})$
+
+スピンには影響を与えない
+\end{deftcolorbox}
+
+\begin{deftcolorbox}[title = 回転演算子$\hat{R}_{\bm{n},\theta}$]
+$\bm{n}$周りの$\theta$回転, 角運動量演算子$\hat{\bm{L}} = \hat{\bm{x}} \times \hat{\bm{p}}$
+
+3次元ベクトル空間における回転行列を$R_{\bm{n},\theta}$とおくと
+\begin{align*}
+    \hat{R}_{\bm{n},\theta} &= e^{-i \theta \bm{n}\cdot \hat{\bm{L}}} \otimes e^{-i\frac{\theta}{2}\bm{n}\cdot \hat{\bm{\sigma}}}\\
+    \hat{R}_{\bm{n},\theta}^{\dagger} \hat{\bm{x}} \hat{R}_{\bm{n},\theta} &= R_{\bm{n},\theta}\hat{\bm{x}}\\
+    \hat{R}_{\bm{n},\theta}^{\dagger} \hat{\bm{p}} \hat{R}_{\bm{n},\theta} &= R_{\bm{n},\theta}\hat{\bm{p}}\\
+    \hat{R}_{\bm{n},\theta}^{\dagger} \hat{\bm{\sigma}} \hat{R}_{\bm{n},\theta} &= R_{\bm{n},\theta}\hat{\bm{\sigma}}\\
+    \hat{R}_{\bm{n},\theta}\ket{\bm{x}}\ket{\bm{s}} &= e^{-i\frac{\theta}{2}} \ket{R_{\bm{n},\theta}\bm{x}} \ket{R_{\bm{n},\theta}\bm{s}}
+\end{align*}
+波動関数は$\psi(\bm{x}) \rightarrow \psi(R^{-1}_{\bm{n},\theta}(\bm{x}))$
+
+半整数スピン系において, 360$^\circ$回転させると位相が-1倍される
+\end{deftcolorbox}
+
+\begin{deftcolorbox}[title = 空間反転演算子$\hat{P}$]
+\begin{align*}
+    \hat{P}^{\dagger} & = \hat{P}\\
+    \hat{P}^{\dagger} \hat{\bm{x}} \hat{P} & = - \hat{\bm{x}}\\
+    \hat{P}^{\dagger} \hat{\bm{p}} \hat{P} & = - \hat{\bm{p}}\\
+    \hat{P}^{\dagger} \hat{\bm{\sigma}} \hat{P} & = \hat{\bm{\sigma}}\\
+    \hat{P} \ket{\bm{x}} \ket{\bm{s}} = \ket{-\bm{x}} \ket{\bm{s}}
+\end{align*}
+\end{deftcolorbox}
+
+\begin{deftcolorbox}[title = 時間反転演算子$\hat{\Theta}$]
+$K$は$K(a\ket{x})=a^{\ast}\ket{x}$を満たす複素共役演算子
+\begin{align*}
+    \hat{\Theta} & = K \otimes (-i)\sigma_y = K \otimes \begin{pmatrix}0 & -1 \\ 1 & 0 \end{pmatrix}\\
+    \hat{\Theta}^{\dagger} & = \hat{\Theta}^{-1} = -\hat{\Theta}\\
+    \hat{\Theta}^{\dagger} \hat{\bm{x}} \hat{\Theta} & = \hat{\bm{x}}\\
+    \hat{\Theta}^{\dagger} \hat{\bm{p}} \hat{\Theta} & = - \hat{\bm{p}}\\
+    \hat{\Theta}^{\dagger} \hat{\bm{\sigma}} \hat{\Theta} & = - \hat{\bm{\sigma}}\\
+    \hat{\Theta} (a\ket{\bm{x}} \ket{\bm{s}(\theta,\varphi)}) = a^{\dagger}\ket{\bm{x}} e^{-i\varphi} \ket{\bm{s}(\theta+\pi,\varphi)}
+\end{align*}
+$\ket{\bm{s}(\theta,\varphi)}$は$\qty{\sin \theta \cos \varphi, \sin \theta \sin \varphi, \sin \theta}$に対応するBloch状態
+\begin{equation*}
+    \ket{\bm{s}(\theta,\varphi)} = \begin{pmatrix} \cos \frac{\theta}{2} \\ e^{i\varphi} \sin \frac{\theta}{2} \end{pmatrix}
+\end{equation*}
+\end{deftcolorbox}

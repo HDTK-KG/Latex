@@ -1,0 +1,151 @@
+\section{対称性とBerry曲率}
+\begin{deftcolorbox}[title = Berry接続$a^{i}_{mn}(\bm{k})$]
+    \begin{equation*}
+        a^{i}_{mn}(\bm{k}) = i \braket{u_m(\bm{k})}{\partial_i u_n(\bm{k})}
+    \end{equation*}
+\end{deftcolorbox}
+
+\begin{deftcolorbox}[title = Berry曲率$\Omega^{ij}_n(\bm{k})$]
+    \begin{equation*}
+        \Omega^{ij}_n(\bm{k}) = \partial_i a^{j}_{nn}(\bm{k}) - \partial_j a^{i}_{nn}(\bm{k})
+    \end{equation*}
+    あるいは擬ベクトルの形式で
+    \begin{equation*}
+        \Omega^i_n(\bm{k}) = \frac{1}{2} \varepsilon_{ijk} \Omega^{jk}_n(\bm{k})
+    \end{equation*}
+\end{deftcolorbox}
+
+\begin{theotcolorbox}[title = 時間反転を含まない操作$\hat{U}$で対称なとき]
+    $\hat{U}$に対応する3次元ベクトル上の操作は回転$R$と並進$\bm{a}$の組み合わせ
+    \begin{equation*}
+        U(\bm{x}) = R\bm{x} + \bm{a}
+    \end{equation*}
+    とかける, このとき
+    \begin{align*}
+        a^{i}_{mn}(R \bm{k}) & = R_{ij} \partial_j \chi_n(\bm{k}) \delta_{mn} + R_{ij} e^{i(\chi_m(\bm{k}) - \chi_n(\bm{k}))} a^i_{mn} (\bm{k})\\
+        \Omega^{ij}_n(R\bm{k}) & = R_{ik} R_{jl} \Omega^{kl}_n(\bm{k})\\
+        \bm{\Omega}_n (R \bm{k}) & = \frac{1}{\mathrm{det}{R}} R \bm{\Omega}_n (\bm{k})
+    \end{align*}
+    {\Large (例)}
+
+    {\large \uline{空間反転対称なとき}}
+
+    \begin{equation*}
+        \bm{\Omega}_n ( - \bm{k}) = \bm{\Omega}_n (\bm{k})
+    \end{equation*}
+
+    {\large \uline{2回回転対称性$C_{2z}$をもつとき}}
+    \begin{align*}
+        \Omega_n^1 (-k_x,-k_y,k_z) & = - \Omega_n^1 (k_x,k_y,k_z)\\
+        \Omega_n^2 (-k_x,-k_y,k_z) & = - \Omega_n^2 (k_x,k_y,k_z)\\
+        \Omega_n^3 (-k_x,-k_y,k_z) & = \Omega_n^3 (k_x,k_y,k_z)
+    \end{align*}
+
+    {\large \uline{鏡映対称性$M_x$をもつとき}}
+    \begin{align*}
+        \Omega_n^1 (-k_x,k_y,k_z) & = \Omega_n^1 (k_x,k_y,k_z)\\
+        \Omega_n^2 (-k_x,k_y,k_z) & = - \Omega_n^2 (k_x,k_y,k_z)\\
+        \Omega_n^3 (-k_x,k_y,k_z) & = - \Omega_n^3 (k_x,k_y,k_z)
+    \end{align*}
+\end{theotcolorbox}
+
+\begin{equation*}
+    \hat{U}^{\dagger} \hat{\mathcal{H}}_{R\bm{k}} \hat{U} = \hat{\mathcal{H}}_{\bm{k}}
+\end{equation*}
+ここで
+\begin{align*}
+    \hat{\mathcal{H}}_{\bm{k}} \ket{u_n(\bm{k})} & = E_n(\bm{k}) \ket{u_n(\bm{k})}\\
+    \hat{\mathcal{H}}_{R\bm{k}} \ket{u_n(R\bm{k})} & = E_n(R\bm{k}) \ket{u_n(R\bm{k})}
+\end{align*}
+となるが
+\begin{align*}
+    \hat{\mathcal{H}}_{R\bm{k}} \hat{U} \ket{u_n(\bm{k})} & = \hat{U} \hat{\mathcal{H}}_{\bm{k}} \ket{u_n(\bm{k})}\\
+    & = E_n(\bm{k}) \hat{U} \ket{u_n(\bm{k})}
+\end{align*}
+よって
+\begin{equation*}
+    E_n(R\bm{k}) = E_n(\bm{k})
+\end{equation*}
+$n$番目のバンドが$\bm{k}$でエネルギー縮退しないとき, 
+\begin{equation*}
+    \hat{U} \ket{u_n(\bm{k})} = e^{i\chi_n(\bm{k})} \ket{u_n(R \bm{k})} 
+\end{equation*}
+が成り立つ
+\begin{align*}
+    a^{i}_{mn}(R \bm{k}) & = i \braket{u_m(R\bm{k})}{\partial_i u_n(R\bm{k})}\\
+    & = i \bra{u_m(\bm{k})} \hat{U}^{\dagger} e^{i\chi_m(\bm{k})} \ket{\partial_i u_n(R\bm{k})}
+\end{align*}
+ここで
+\begin{align*}
+    \ket{\partial_i u_n(R\bm{k})} & = R_{ij} \partial_j \ket{u_n(R\bm{k})}\\
+    & = R_{ij} \partial_j \qty(e^{- i\chi_n(\bm{k})} \hat{U} \ket{u_n(\bm{k})})\\
+    & = \hat{U} R_{ij} e^{- i\chi_n(\bm{k})} \qty( -i \partial_j \chi_n(\bm{k}) \ket{u_n(\bm{k})} + \ket{\partial_j u_n(\bm{k})})
+\end{align*}
+なので
+\begin{equation*}
+    a^{i}_{mn}(R \bm{k}) = R_{ij} \partial_j \chi_n(\bm{k}) \delta_{mn} + R_{ij} e^{i(\chi_m(\bm{k}) - \chi_n(\bm{k}))} a^i_{mn} (\bm{k})
+\end{equation*}
+が成り立つ, 特に
+\begin{equation*}
+    a^{i}_{nn}(R \bm{k}) = R_{ij} \partial_j \chi_n(\bm{k}) + R_{ij} a^j_{nn} (\bm{k})
+\end{equation*}
+となる. ここで
+\begin{align*}
+    \partial_i a^{j}_{nn}(R\bm{k}) & = R_{ik} \partial_k \qty(a^{j}_{nn}(R\bm{k}))\\
+    & = R_{ik} \partial_k \qty( R_{jl} \partial_l \chi_n(\bm{k}) + R_{jl} a^l_{nn} (\bm{k}) )\\
+    & = R_{ik} R_{jl} \qty( \partial_k \partial_l \chi_n(\bm{k}) + \partial_k a^l_{nn} (\bm{k}))
+\end{align*}
+より
+\begin{align*}
+    \Omega^{ij}_n(R\bm{k}) & = \partial_i a^{j}_{nn}(R\bm{k}) - \partial_j a^{i}_{nn}(R\bm{k})\\
+    & = R_{ik} R_{jl} \qty( \partial_k \partial_l \chi_n(\bm{k}) + \partial_k a^l_{nn} (\bm{k})) - R_{jl} R_{ik}  \qty( \partial_l \partial_k \chi_n(\bm{k}) + \partial_l a^k_{nn} (\bm{k}))\\
+    & = R_{ik} R_{jl} \Omega^{kl}_n(\bm{k})
+\end{align*}
+擬ベクトルの形式を用いると
+\begin{equation*}
+    \bm{\Omega}_n (R \bm{k}) = \frac{R}{\mathrm{det}{R}} \bm{\Omega}_n (\bm{k})
+\end{equation*}
+\begin{theotcolorbox}[title = 時間反転を含む操作$\hat{U}$で対称なとき]
+    $\hat{U} = \hat{U'} \hat{\Theta}$と分解できる, ここで$\hat{U'}$は対応する3次元ベクトル上の操作は回転$R$と並進$\bm{a}$の組み合わせ
+    \begin{equation*}
+        U'(\bm{x}) = R\bm{x} + \bm{a}
+    \end{equation*}
+    とかけ, このとき
+\end{theotcolorbox}
+
+P Symmetry : 適切な Gauge をとると
+\begin{equation*}
+    P\ket{u_n(k)} = \ket{u_n(-k)}
+\end{equation*}
+\begin{equation*}
+    a^{i}_{mn}(-k) = - a^{i}_{mn}(k) 
+\end{equation*}
+\begin{equation*}
+    \Omega^{ij}_n(-k) =  \Omega^{ij}_n(k)
+\end{equation*}
+
+T Symmetry : 
+\begin{equation*}
+    T\ket{u_n(k)} = \ket{u_n(-k)}
+\end{equation*}
+\begin{equation*}
+    a^{i}_{mn}(-k) = a^{i}_{nm}(k)
+\end{equation*}
+\begin{equation*}
+    \Omega^{ij}_n(-k) =  -\Omega^{ij}_n(k)
+\end{equation*}
+
+PT Symmetry :
+\begin{equation*}
+    PT\ket{u_n(k)} = \ket{u_n(k)}
+\end{equation*}
+\begin{equation*}
+    a^{i}_{mn}(k) = -a^{i}_{nm}(k)
+\end{equation*}
+\begin{equation*}
+    \Omega^{ij}_n(k) =  0
+\end{equation*}
+
+\begin{equation*}
+    (\braket{T\phi}{T\psi} = \braket{\psi}{\phi})
+\end{equation*}
