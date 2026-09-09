@@ -11,9 +11,6 @@
         // 末尾の ":" は、デフォルトのTeX検索パスも引き続き使用することを意味します
         "TEXINPUTS": "${containerWorkspaceFolder}/styles//:"
     },
-    "mounts": [
-  "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
-  ],
   "customizations": {
     "vscode": {
       "extensions": [

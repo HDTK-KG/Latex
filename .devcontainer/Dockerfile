@@ -62,6 +62,9 @@ RUN if id ubuntu >/dev/null 2>&1; then \
         && useradd --create-home --shell /bin/bash --uid 1000 --gid 1000 vscode; \
     fi
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends openssh-client \
+    && rm -rf /var/lib/apt/lists/*
 USER vscode
 WORKDIR /workspace
 
